@@ -72,6 +72,38 @@ screen and (min-width: 480px) {
   font-size: 1.5rem;
 }
 
+.publications .author-name {
+  color: #57068c;
+  font-weight: 600;
+}
+
+#publications + .publications > ul > li > strong:first-child {
+  color: #1f1f1f;
+  font-size: 1.04em;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.news-list {
+  list-style: none;
+  padding-left: 1.35rem;
+}
+
+.news-list li {
+  position: relative;
+}
+
+.news-list li::before {
+  color: #57068c;
+  content: "\f0a1";
+  font-family: "Font Awesome 5 Free";
+  font-size: 0.72em;
+  font-weight: 900;
+  left: -1.25rem;
+  position: absolute;
+  top: 0.28em;
+}
+
 .publications h2.year {
   color: #e8e8e8;
   border-top: 1px solid #e8e8e8;
@@ -156,6 +188,20 @@ screen and (min-width: 480px) {
     padding-bottom: 0.1rem;
   }
 
+}
+
+@media (prefers-color-scheme: dark) {
+  .publications .author-name {
+    color: #ab82c5;
+  }
+
+  #publications + .publications > ul > li > strong:first-child {
+    color: #ffffff;
+  }
+
+  .news-list li::before {
+    color: #ab82c5;
+  }
 }
 
 .publications ol.bibliography li .links a.btn:hover {
