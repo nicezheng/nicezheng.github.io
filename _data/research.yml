@@ -1,0 +1,130 @@
+- id: human-ai-decision-making
+  title: Human–AI Decision-Making in Social Systems
+  accent: "#7F77DD"
+  paragraphs:
+    - >-
+      My primary research examines how social signals influence human and AI
+      decision-making, especially when the underlying information is difficult
+      to verify. I am particularly interested in signals that make previously
+      unobservable activities visible, such as contribution summaries,
+      behavioral traces, or other platform-generated indicators used to
+      evaluate people. A central finding from this line of work is that
+      increasing visibility does not necessarily improve evaluation: signals
+      can be ignored, misinterpreted, or used in ways that create unintended
+      behavioral consequences.
+    - >-
+      Building on this, I study how humans and large language models interpret
+      the same social signals. In unverifiable decision settings, where there
+      is no immediate ground truth for whether a decision is “correct,” humans
+      and LLMs may rely on different cues, weigh information differently, and
+      exhibit different forms of bias. My current work focuses on identifying
+      these differences and understanding which properties of a signal make it
+      informative, misleading, or robust across decision-makers. The next step
+      is to move from analyzing existing signals to designing new ones. I aim
+      to develop and experimentally evaluate signals that improve decision
+      quality for both humans and AI, with particular attention to how
+      information should be selected, summarized, and presented in mixed
+      human–AI decision environments.
+  related_publication_ids:
+    - verify-unverifiable-platform
+    - human-llm-unverifiable-decisions
+    - llms-unverifiable-scenarios
+    - paradox-being-seen
+    - commitment-cooperation
+    - cooperation-heterogeneous-preferences
+
+- id: llm-values-ai-orientalism
+  title: LLM Values and AI Orientalism
+  accent: "#D84C19"
+  paragraphs:
+    - >-
+      This research line studies how large language models represent cultural
+      values and whether those representations systematically distort
+      differences between societies. Rather than asking only whether a model
+      produces biased answers, I focus on the structure of the bias: which
+      cultures are represented as more similar or more different than they
+      actually are, which values are treated as normative, and whether
+      non-Western societies are described through simplified or externally
+      imposed cultural frames.
+    - >-
+      I use the idea of AI Orientalism to examine whether representational
+      asymmetries historically discussed in cultural theory persist in
+      contemporary generative AI. The key question is whether models reproduce
+      a particular worldview when they describe cultures that are
+      underrepresented, indirectly represented, or represented through
+      historically asymmetric sources. Going forward, I plan to test whether
+      these patterns remain stable outside abstract value surveys. This
+      includes more contextualized social scenarios, real-world decision
+      tasks, image and multimodal generation, and comparisons across models
+      with different training pipelines. I am also interested in linking
+      observed cultural bias to training data composition and data provenance,
+      so that the analysis moves from documenting representational differences
+      toward explaining where they come from.
+  related_publication_ids:
+    - value-atlas-ai
+
+- id: ai-geospatial-science
+  title: AI for Geospatial Science
+  accent: "#378ADD"
+  paragraphs:
+    - >-
+      My geospatial AI research focuses on dune interpretation and segmentation
+      as a progressively more realistic scientific workflow. The starting
+      point is manual segmentation, where domain experts identify dune
+      boundaries directly from imagery. This process is accurate but expensive
+      and difficult to scale. I therefore first explored automated
+      deep-learning-based segmentation, and then moved toward
+      foundation-model-based approaches that adapt general-purpose segmentation
+      models to dune imagery using domain-specific knowledge.
+    - >-
+      The next challenge was that fully automated segmentation is rarely
+      sufficient for scientific use. Dune boundaries can be ambiguous, and
+      experts often need to correct model predictions based on geomorphological
+      knowledge. This led to interactive segmentation systems that allow
+      experts to refine predictions through clicks, lines, and other prompts,
+      followed by tangible interfaces that make these interactions more natural
+      on portable devices. My next step is edge-based segmentation and
+      cloud–edge–device collaboration, where model inference, interaction, and
+      computation can be distributed across devices with different resource
+      constraints. The longer-term goal is to build a complete workflow that
+      connects automated segmentation, expert correction, portable
+      interaction, and efficient deployment rather than treating segmentation
+      accuracy as the only research objective.
+  related_publication_ids:
+    - fengepad
+    - dcv2i-ai-magazine
+    - dunesa
+    - fenge
+    - dcv2i-iaai
+
+- id: ai-ocean-science
+  title: AI for Ocean Science
+  accent: "#1E8A7A"
+  paragraphs:
+    - >-
+      My ocean research focuses on spatiotemporal prediction of ocean variables
+      by combining data-driven models with physical ocean dynamics. I began by
+      systematically examining how deep learning has been used to predict
+      temperature, salinity, currents, and related ocean parameters, with
+      particular attention to data sources, spatial and temporal scales, model
+      architectures, and evaluation strategies. This provided a foundation for
+      identifying a recurring limitation of purely data-driven approaches: they
+      can produce accurate forecasts without explicitly representing the
+      physical processes responsible for ocean evolution.
+    - >-
+      I therefore moved toward physics-informed modeling, particularly for sea
+      surface temperature prediction, by incorporating processes such as
+      advection, diffusion, and air–sea heat exchange into neural dynamical
+      models. The next stage is to extend this framework from continuous-variable
+      prediction to high-impact events, especially marine heat extremes. My
+      current interest is in combining physical constraints, multi-source
+      observations, and adaptive learning to predict not only whether an
+      extreme event will occur, but also its intensity, duration, and spatial
+      extent. Future work will focus on event-level forecasting, robustness
+      under changing ocean conditions, and continuous model updating, with the
+      goal of developing prediction systems that are useful for both scientific
+      analysis and operational early warning.
+  related_publication_ids:
+    - ocean-heat-extremes-warning
+    - sstode
+    - ocean-parameters-review

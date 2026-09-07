@@ -1,0 +1,34 @@
+---
+layout: default
+title: Research Agenda
+page_class: research
+description: Zheng Jiang's research agenda across human-AI decision-making, LLM values, geospatial AI, and ocean AI.
+---
+
+<div class="page-wrapper inner-page">
+  <header class="page-heading">
+    <h1>Research Agenda</h1>
+  </header>
+
+  <div class="research-direction-list">
+    {% for card in site.data.research %}
+      <section class="research-direction" id="{{ card.id }}" style="--direction-accent: {{ card.accent }};">
+        <h2>{{ card.title }}</h2>
+        <div class="prose">
+          {% for paragraph in card.paragraphs %}
+            {{ paragraph | markdownify }}
+          {% endfor %}
+        </div>
+        <div class="related-work">
+          <h3>Related publications</h3>
+          <ul>
+            {% for publication_id in card.related_publication_ids %}
+              {% assign publication = site.data.publications | where: 'id', publication_id | first %}
+              <li><a href="{{ '/publications.html' | append: '#' | append: publication.id | relative_url }}">{{ publication.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+</div>

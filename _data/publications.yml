@@ -1,0 +1,415 @@
+- id: verify-unverifiable-platform
+  title: "Verify the Unverifiable: A Platform for AI in Unverifiable Decision Scenarios"
+  authors:
+    - name: Zheng Jiang
+      self: true
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: IC2S2 2026
+  year: 2026
+  links: []
+  tags:
+    - AI Behavior
+    - Social Computing
+
+- id: human-llm-unverifiable-decisions
+  title: "Investigating Human and LLMs' Decisions in Unverifiable Environments: A Case Study with GitHub Activity Overview"
+  authors:
+    - name: Zheng Jiang
+      self: true
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Yang Feng
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: ACL 2026 Findings
+  year: 2026
+  links:
+    - label: Paper
+      url: https://aclanthology.org/2026.findings-acl.1374.pdf
+    - label: Code
+      url: https://github.com/nicezheng/unverifiable-decision-data
+  tags:
+    - Social Computing
+    - AI Behavior
+
+- id: ocean-heat-extremes-warning
+  title: Towards an Early Warning System for Ocean Heat Extremes Through AI-Ocean Dynamics Synergy
+  authors:
+    - name: Zheng Jiang
+      self: true
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Yifei Bao
+      self: false
+    - name: Zengzhou Hao
+      self: false
+    - name: Lingyu Xu
+      self: false
+    - name: Suixiang Shi
+      self: false
+    - name: Lei Wang
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: IJCAI 2026 · AI and Social Good
+  year: 2026
+  links:
+    - label: Project Proposal
+      url: https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4G39.pdf
+  tags:
+    - AI4OceanScience
+
+- id: llms-unverifiable-scenarios
+  title: How Different LLMs Behave in Unverifiable Decision Scenarios?
+  authors:
+    - name: Zheng Jiang
+      self: true
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Yang Feng
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: CogSci 2026
+  year: 2026
+  links:
+    - label: Paper
+      url: https://escholarship.org/content/qt9p1602mb/qt9p1602mb.pdf
+  tags:
+    - AI Behavior
+    - Social Computing
+
+- id: value-atlas-ai
+  title: "The Value Atlas of AI: Mapping World Human Values in Large Language Models"
+  authors:
+    - name: Xinyi You
+      self: false
+      equal: true
+    - name: Zheng Jiang
+      self: true
+      equal: true
+    - name: Zichan Chen
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Wei Wang
+      self: false
+    - name: Yang Feng
+      self: false
+    - name: Libo Liu
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: Preprint
+  year: 2026
+  links:
+    - label: Paper
+      url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6585679
+    - label: Code
+      url: https://doi.org/10.6084/m9.figshare.32532705
+  tags:
+    - AI Behavior
+    - Social Computing
+
+- id: sstode
+  title: "SSTODE: Ocean-Atmosphere Physics-Informed Neural ODEs for Sea Surface Temperature Prediction"
+  authors:
+    - name: Zheng Jiang
+      self: true
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: AAAI 2026 · AISI
+  year: 2026
+  links:
+    - label: Paper
+      url: https://arxiv.org/pdf/2511.05629
+    - label: Code
+      url: https://github.com/nicezheng/SSTODE-code
+  tags:
+    - AI4OceanScience
+
+- id: heterogeneous-se-research
+  title: Maintaining the Heterogeneity in the Organization of Software Engineering Research
+  authors:
+    - name: Yang Yue
+      self: false
+    - name: Zheng Jiang
+      self: true
+    - name: Yi Wang
+      self: false
+  venue: ICSE 2026 · Future of Software Engineering
+  year: 2026
+  links:
+    - label: Paper
+      url: https://arxiv.org/pdf/2602.03093
+  tags:
+    - Other
+
+- id: paradox-being-seen
+  title: "The Paradox of Being Seen: Signaling Contributors' Unobservable Activities Limits Their Success in Open Collaboration"
+  authors:
+    - name: Zheng Jiang
+      self: true
+    - name: Wei Wang
+      self: false
+    - name: Liu Wang
+      self: false
+    - name: Yang Feng
+      self: false
+    - name: Min Zhang
+      self: false
+    - name: Libo Liu
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: Preprint
+  year: 2025
+  links:
+    - label: Paper
+      url: https://dx.doi.org/10.2139/ssrn.5684204
+    - label: Code
+      url: https://doi.org/10.6084/m9.figshare.30445532
+  tags:
+    - Social Computing
+
+- id: ocean-parameters-review
+  title: "Deep Learning for Ocean Parameters Prediction: A Systematic Literature Review"
+  authors:
+    - name: Wei Wang
+      self: false
+    - name: Zheng Jiang
+      self: true
+    - name: Anqi Lu
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Yi Wang
+      self: false
+    - name: Lingyu Xu
+      self: false
+    - name: Suixiang Shi
+      self: false
+  venue: Preprint
+  year: 2025
+  links:
+    - label: Paper
+      url: https://assets-eu.researchsquare.com/files/rs-7460394/v1_covered_5b4be540-999e-40f5-a704-ed86e872886c.pdf?c=1756648954
+  tags:
+    - AI4OceanScience
+
+- id: commitment-cooperation
+  title: "Commitment & Cooperation in Social Dilemmas with Diverse Individual Preferences: An Agent-Based Modeling Approach"
+  authors:
+    - name: Zheng Jiang
+      self: true
+    - name: Luzhan Yuan
+      self: false
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: PLOS ONE
+  year: 2025
+  links:
+    - label: Paper
+      url: https://doi.org/10.1371/journal.pone.0327131
+  tags:
+    - Social Computing
+
+- id: ios-app-privacy-report
+  title: A Big Step Forward? A User-Centric Examination of iOS App Privacy Report and Enhancements
+  authors:
+    - name: Liu Wang
+      self: false
+    - name: Dong Wang
+      self: false
+    - name: Shidong Pan
+      self: false
+    - name: Zheng Jiang
+      self: true
+    - name: Haoyu Wang
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: IEEE Symposium on Security and Privacy (S&P)
+  year: 2025
+  links:
+    - label: Paper
+      url: https://arxiv.org/pdf/2511.00467
+  tags:
+    - Other
+
+- id: fengepad
+  title: FenGePad—A Tangible Multi-Prompt Interactive Framework for Deep Dune Segmentation
+  authors:
+    - name: Zheng Jiang
+      self: true
+      equal: true
+    - name: Haonan Kang
+      self: false
+      equal: true
+    - name: Zifeng Wu
+      self: false
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Eerdun Hasi
+      self: false
+    - name: Xiaohan Sun
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: ECAI 2025 · PAIS
+  year: 2025
+  links:
+    - label: Paper
+      url: https://journals.sagepub.com/doi/pdf/10.3233/FAIA251486
+    - label: Code
+      url: https://github.com/nicezheng/FenGePad-Model
+  tags:
+    - AI4GeospatialScience
+
+- id: dcv2i-ai-magazine
+  title: "DCV²I: Leveraging Deep Vision Models to Support Geographers' Visual Interpretation in Dune Segmentation"
+  authors:
+    - name: Anqi Lu
+      self: false
+    - name: Zifeng Wu
+      self: false
+    - name: Zheng Jiang
+      self: true
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Eerdun Hasi
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: AI Magazine
+  year: 2024
+  links:
+    - label: Paper
+      url: https://onlinelibrary.wiley.com/doi/epdf/10.1002/aaai.12199
+    - label: Code
+      url: https://doi.org/10.6084/m9.figshare.24564874
+  tags:
+    - AI4GeospatialScience
+
+- id: dunesa
+  title: "DuneSA: A SAM-Based Approach with Domain-Specific Knowledge for Aeolian Dune Segmentation"
+  authors:
+    - name: Anqi Lu
+      self: false
+    - name: Zheng Jiang
+      self: true
+    - name: Zifeng Wu
+      self: false
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Eerdun Hasi
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: GoodIT 2024
+  year: 2024
+  links:
+    - label: Paper
+      url: https://dl.acm.org/doi/epdf/10.1145/3677525.3678637
+  tags:
+    - AI4GeospatialScience
+
+- id: fenge
+  title: FenGe—An Interactive Framework for Improving the Utility of Deep Dune Segmentation in Geographical Tasks
+  authors:
+    - name: Zheng Jiang
+      self: true
+    - name: Anqi Lu
+      self: false
+    - name: Zifeng Wu
+      self: false
+    - name: Wei Wang
+      self: false
+    - name: Gaowei Zhang
+      self: false
+    - name: Eerdun Hasi
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: ECAI 2024
+  year: 2024
+  links:
+    - label: Paper
+      url: https://journals.sagepub.com/doi/epdf/10.3233/FAIA240831
+  tags:
+    - AI4GeospatialScience
+
+- id: dcv2i-iaai
+  title: "DCV2I: A Practical Approach for Supporting Geographers' Visual Interpretation in Dune Segmentation with Deep Vision Models"
+  authors:
+    - name: Anqi Lu
+      self: false
+    - name: Zifeng Wu
+      self: false
+    - name: Zheng Jiang
+      self: true
+    - name: Wei Wang
+      self: false
+    - name: Eerdun Hasi
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: IAAI 2024
+  year: 2024
+  links:
+    - label: Paper
+      url: https://ojs.aaai.org/index.php/AAAI/article/view/30313
+  tags:
+    - AI4GeospatialScience
+  award: Deployed Application Award
+
+- id: cooperation-heterogeneous-preferences
+  title: The Dynamics of Cooperation with Commitment in a Population of Heterogeneous Preferences—An ABM Study
+  authors:
+    - name: Wei Wang
+      self: false
+    - name: Luzhan Yuan
+      self: false
+    - name: Zheng Jiang
+      self: true
+    - name: Gaowei Zhang
+      self: false
+    - name: Yi Wang
+      self: false
+  venue: CogSci 2024
+  year: 2024
+  links:
+    - label: Paper
+      url: https://escholarship.org/content/qt54p610s8/qt54p610s8.pdf?v=lg
+    - label: Code
+      url: https://doi.org/10.6084/m9.figshare.24138345
+  tags:
+    - Social Computing

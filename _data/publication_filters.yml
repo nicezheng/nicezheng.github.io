@@ -1,0 +1,12 @@
+- label: All
+  count: 17
+- label: AI Behavior
+  count: 4
+- label: Social Computing
+  count: 7
+- label: AI4OceanScience
+  count: 3
+- label: AI4GeospatialScience
+  count: 5
+- label: Other
+  count: 2

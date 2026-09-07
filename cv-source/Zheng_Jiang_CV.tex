@@ -1,0 +1,219 @@
+% !TEX program = xelatex
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,margin=0.74in,top=0.64in,bottom=0.68in]{geometry}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{ragged2e}
+
+\setmainfont{texgyrepagella-regular.otf}[
+  BoldFont=texgyrepagella-bold.otf,
+  ItalicFont=texgyrepagella-italic.otf,
+  BoldItalicFont=texgyrepagella-bolditalic.otf
+]
+\setsansfont{texgyreheros-regular.otf}[
+  BoldFont=texgyreheros-bold.otf,
+  ItalicFont=texgyreheros-italic.otf,
+  BoldItalicFont=texgyreheros-bolditalic.otf
+]
+\definecolor{brand}{HTML}{440079}
+\definecolor{accent}{HTML}{D84C19}
+\definecolor{muted}{HTML}{56505A}
+\definecolor{rulecolor}{HTML}{D9D2DE}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=brand,
+  urlcolor=brand,
+  pdfauthor={Zheng Jiang},
+  pdftitle={Zheng Jiang - Curriculum Vitae},
+  pdfsubject={Academic curriculum vitae}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\fancyfoot[L]{\sffamily\footnotesize\color{muted}Zheng Jiang}
+\fancyfoot[R]{\sffamily\footnotesize\color{muted}Page \thepage\ of \pageref*{LastPage}}
+
+\titleformat{\section}
+  {\large\bfseries\color{brand}}
+  {}{0pt}{}
+  [\vspace{2pt}\color{rulecolor}\titlerule]
+\titlespacing*{\section}{0pt}{11pt}{6pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\setlength{\emergencystretch}{1em}
+\setlist[itemize]{leftmargin=0.2in,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=0.27in,itemsep=7pt,topsep=4pt}
+\newcommand{\cvlink}[2]{\href{#1}{\sffamily\footnotesize[#2]}}
+\newcommand{\self}{\textbf{Zheng Jiang}}
+\newcommand{\pubtitle}[1]{{\bfseries\RaggedRight #1\par}\vspace{-2pt}}
+\newcommand{\datedentry}[3]{%
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{1.35in}@{}}
+    \textbf{#1} & \textcolor{brand}{\textbf{#2}} \\
+    \textcolor{muted}{#3} &
+  \end{tabularx}
+}
+
+\begin{document}
+
+\begin{center}
+  {\fontsize{25}{29}\selectfont\bfseries\color{brand} Zheng Jiang}\\[2pt]
+  {\large Ph.D. Candidate in Intelligent Science and Technology}\\[3pt]
+  School of Artificial Intelligence, Beijing University of Posts and Telecommunications\\[4pt]
+  \href{mailto:nicezheng.jiang@gmail.com}{nicezheng.jiang@gmail.com}
+  \enspace\textcolor{rulecolor}{|}\enspace
+  \href{https://nicezheng.github.io/}{nicezheng.github.io}
+  \enspace\textcolor{rulecolor}{|}\enspace
+  \href{https://scholar.google.com/citations?user=b60BQmoAAAAJ}{Google Scholar}\\[-1pt]
+  \href{https://github.com/nicezheng}{GitHub}
+  \enspace\textcolor{rulecolor}{|}\enspace
+  \href{https://www.linkedin.com/in/zheng-jiang-a55502283/}{LinkedIn}
+  \enspace\textcolor{rulecolor}{|}\enspace
+  \href{https://x.com/NicezhengJiang}{X}
+\end{center}
+
+\section{Research Interests}
+My research connects social computing, human--AI decision-making, and AI for
+science. I study how people and AI use social signals, how large language
+models represent human values, and how domain and physical knowledge can make
+scientific AI more useful and reliable.
+
+\begin{itemize}
+  \item \textbf{Human--AI Decision-Making in Social Systems:} social signals,
+    unverifiable decisions, and the behavioral consequences of making hidden
+    activities visible to people and AI.
+  \item \textbf{LLM Values and AI Orientalism:} cultural value
+    representations, representational asymmetries, and links between model
+    behavior and training-data provenance.
+  \item \textbf{AI for Geospatial Science:} automated and interactive dune
+    segmentation, expert correction, tangible interaction, and
+    cloud--edge--device collaboration.
+  \item \textbf{AI for Ocean Science:} physics-informed spatiotemporal ocean
+    prediction and early warning of marine heat extremes.
+\end{itemize}
+
+\section{Education}
+\datedentry{Ph.D. in Intelligent Science and Technology}{Sep. 2022 -- Present}{School of Artificial Intelligence, Beijing University of Posts and Telecommunications, Beijing, China}
+\datedentry{B.E. in Computer Science and Technology}{Sep. 2018 -- Jun. 2022}{School of Information, Beijing Forestry University, Beijing, China}
+
+\section{Publications}
+\textit{* denotes equal contribution.}
+
+\subsection*{2026}
+\begin{enumerate}[series=publications]
+  \item \textbf{Verify the Unverifiable: A Platform for AI in Unverifiable Decision Scenarios}.\\
+    \self, Wei Wang, Gaowei Zhang, and Yi Wang. \emph{IC2S2 2026}.
+
+  \item \textbf{Investigating Human and LLMs' Decisions in Unverifiable Environments: A Case Study with GitHub Activity Overview}.\\
+    \self, Wei Wang, Gaowei Zhang, Yang Feng, and Yi Wang. \emph{ACL 2026 Findings}.
+    \cvlink{https://aclanthology.org/2026.findings-acl.1374.pdf}{Paper}
+    \cvlink{https://github.com/nicezheng/unverifiable-decision-data}{Code}
+
+  \item \textbf{Towards an Early Warning System for Ocean Heat Extremes Through AI-Ocean Dynamics Synergy}.\\
+    \self, Wei Wang, Gaowei Zhang, Yifei Bao, Zengzhou Hao, Lingyu Xu,
+    Suixiang Shi, Lei Wang, and Yi Wang. \emph{IJCAI 2026, AI and Social Good}.
+    \cvlink{https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4G39.pdf}{Project Proposal}
+
+  \item \textbf{How Different LLMs Behave in Unverifiable Decision Scenarios?}.\\
+    \self, Wei Wang, Gaowei Zhang, Yang Feng, and Yi Wang. \emph{CogSci 2026}.
+    \cvlink{https://escholarship.org/content/qt9p1602mb/qt9p1602mb.pdf}{Paper}
+
+  \item \textbf{The Value Atlas of AI: Mapping World Human Values in Large Language Models}.\\
+    Xinyi You*, \self*, Zichan Chen, Gaowei Zhang, Wei Wang, Yang Feng, Libo Liu,
+    and Yi Wang. \emph{Preprint, 2026}.
+    \cvlink{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6585679}{Paper}
+    \cvlink{https://doi.org/10.6084/m9.figshare.32532705}{Code}
+
+  \item \textbf{SSTODE: Ocean-Atmosphere Physics-Informed Neural ODEs for Sea Surface Temperature Prediction}.\\
+    \self, Wei Wang, Gaowei Zhang, and Yi Wang. \emph{AAAI 2026, AISI}.
+    \cvlink{https://arxiv.org/pdf/2511.05629}{Paper}
+    \cvlink{https://github.com/nicezheng/SSTODE-code}{Code}
+
+  \item \textbf{Maintaining the Heterogeneity in the Organization of Software Engineering Research}.\\
+    Yang Yue, \self, and Yi Wang. \emph{ICSE 2026, Future of Software Engineering}.
+    \cvlink{https://arxiv.org/pdf/2602.03093}{Paper}
+\end{enumerate}
+
+\subsection*{2025}
+\begin{enumerate}[resume=publications]
+  \item \textbf{The Paradox of Being Seen: Signaling Contributors' Unobservable Activities Limits Their Success in Open Collaboration}.\\
+    \self, Wei Wang, Liu Wang, Yang Feng, Min Zhang, Libo Liu, Gaowei Zhang,
+    and Yi Wang. \emph{Preprint, 2025}.
+    \cvlink{http://dx.doi.org/10.2139/ssrn.5684204}{Paper}
+    \cvlink{https://doi.org/10.6084/m9.figshare.30445532}{Code}
+
+  \item \textbf{Deep Learning for Ocean Parameters Prediction: A Systematic Literature Review}.\\
+    Wei Wang, \self, Anqi Lu, Gaowei Zhang, Yi Wang, Lingyu Xu, and Suixiang Shi.
+    \emph{Preprint, 2025}.
+    \cvlink{https://assets-eu.researchsquare.com/files/rs-7460394/v1_covered_5b4be540-999e-40f5-a704-ed86e872886c.pdf?c=1756648954}{Paper}
+
+  \item \pubtitle{Commitment \& Cooperation in Social Dilemmas with Diverse Individual Preferences: An Agent-Based Modeling Approach.}
+    \self, Luzhan Yuan, Wei Wang, Gaowei Zhang, and Yi Wang. \emph{PLOS ONE, 2025}.
+    \cvlink{https://doi.org/10.1371/journal.pone.0327131}{Paper}
+
+  \item \textbf{A Big Step Forward? A User-Centric Examination of iOS App Privacy Report and Enhancements}.\\
+    Liu Wang, Dong Wang, Shidong Pan, \self, Haoyu Wang, and Yi Wang.
+    \emph{IEEE Symposium on Security and Privacy (S\&P), 2025}.
+    \cvlink{https://arxiv.org/pdf/2511.00467}{Paper}
+
+  \item \textbf{FenGePad—A Tangible Multi-Prompt Interactive Framework for Deep Dune Segmentation}.\\
+    \self*, Haonan Kang*, Zifeng Wu, Wei Wang, Gaowei Zhang, Eerdun Hasi,
+    Xiaohan Sun, and Yi Wang. \emph{ECAI 2025, PAIS}.
+    \cvlink{https://journals.sagepub.com/doi/pdf/10.3233/FAIA251486}{Paper}
+    \cvlink{https://github.com/nicezheng/FenGePad-Model}{Code}
+\end{enumerate}
+
+\newpage
+\subsection*{2024}
+\begin{enumerate}[resume=publications]
+  \item \textbf{DCV²I: Leveraging Deep Vision Models to Support Geographers' Visual Interpretation in Dune Segmentation}.\\
+    Anqi Lu, Zifeng Wu, \self, Wei Wang, Gaowei Zhang, Eerdun Hasi, and Yi Wang.
+    \emph{AI Magazine, 2024}.
+    \cvlink{https://onlinelibrary.wiley.com/doi/epdf/10.1002/aaai.12199}{Paper}
+    \cvlink{https://doi.org/10.6084/m9.figshare.24564874}{Code}
+
+  \item \textbf{DuneSA: A SAM-Based Approach with Domain-Specific Knowledge for Aeolian Dune Segmentation}.\\
+    Anqi Lu, \self, Zifeng Wu, Wei Wang, Gaowei Zhang, Eerdun Hasi, and Yi Wang.
+    \emph{GoodIT 2024}.
+    \cvlink{https://dl.acm.org/doi/epdf/10.1145/3677525.3678637}{Paper}
+
+  \item \textbf{FenGe—An Interactive Framework for Improving the Utility of Deep Dune Segmentation in Geographical Tasks}.\\
+    \self, Anqi Lu, Zifeng Wu, Wei Wang, Gaowei Zhang, Eerdun Hasi, and Yi Wang.
+    \emph{ECAI 2024}.
+    \cvlink{https://journals.sagepub.com/doi/epdf/10.3233/FAIA240831}{Paper}
+
+  \item \textbf{DCV2I: A Practical Approach for Supporting Geographers' Visual Interpretation in Dune Segmentation with Deep Vision Models}.\\
+    Anqi Lu, Zifeng Wu, \self, Wei Wang, Eerdun Hasi, and Yi Wang.
+    \emph{IAAI 2024}. \textcolor{accent}{\textbf{Deployed Application Award}}.
+    \cvlink{https://ojs.aaai.org/index.php/AAAI/article/view/30313}{Paper}
+
+  \item \pubtitle{The Dynamics of Cooperation with Commitment in a Population of Heterogeneous\\ Preferences—An ABM Study.}
+    Wei Wang, Luzhan Yuan, \self, Gaowei Zhang, and Yi Wang. \emph{CogSci 2024}.
+    \cvlink{https://escholarship.org/content/qt54p610s8/qt54p610s8.pdf?v=lg}{Paper}
+    \cvlink{https://doi.org/10.6084/m9.figshare.24138345}{Code}
+\end{enumerate}
+
+\section{Honors \& Awards}
+\datedentry{Deployed Application Award}{2024}{Innovative Applications of Artificial Intelligence (IAAI)}
+\datedentry{First Prize, Beijing Division}{2020}{China Undergraduate Mathematical Contest in Modeling}
+\datedentry{National Third Prize}{2019}{Chinese Mathematics Competitions}
+
+\section{Teaching Assistant Experience}
+\datedentry{Social Interactions and Computing Systems}{Spring 2026}{Beijing University of Posts and Telecommunications}
+\datedentry{Modern Software Development Methodologies and Practices}{Spring 2025}{Beijing University of Posts and Telecommunications}
+\datedentry{Reinforcement Learning}{Spring 2023, Fall 2024}{Beijing University of Posts and Telecommunications}
+\datedentry{Research Methods in Software Engineering}{Fall 2023}{Beijing University of Posts and Telecommunications}
+
+\end{document}

@@ -1,0 +1,11 @@
+<span class="icon icon-{{ include.name }}" aria-hidden="true">
+  {% case include.name %}
+    {% when 'email' %}{% include icons/email.svg %}
+    {% when 'scholar' %}{% include icons/scholar.svg %}
+    {% when 'github' %}{% include icons/github.svg %}
+    {% when 'twitter' %}{% include icons/twitter.svg %}
+    {% when 'linkedin' %}{% include icons/linkedin.svg %}
+    {% when 'award' %}{% include icons/award.svg %}
+    {% else %}{% include icons/file.svg %}
+  {% endcase %}
+</span>

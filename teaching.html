@@ -1,0 +1,27 @@
+---
+layout: default
+title: Teaching
+page_class: teaching
+description: Teaching assistant experience of Zheng Jiang at Beijing University of Posts and Telecommunications.
+---
+
+<div class="page-wrapper inner-page">
+  <header class="page-heading">
+    <h1>Teaching</h1>
+  </header>
+
+  <section class="content-section" aria-labelledby="teaching-assistant-heading">
+    <h2 class="section-title" id="teaching-assistant-heading"><span>Teaching Assistant</span></h2>
+    <ul class="teaching-list">
+      {% for item in site.data.teaching %}
+        <li class="teaching-item">
+          <div>
+            <h3>{{ item.course }}</h3>
+            <p>{{ item.institution }}</p>
+          </div>
+          <time>{{ item.terms }}</time>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>

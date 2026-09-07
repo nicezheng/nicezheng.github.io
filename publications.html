@@ -1,0 +1,47 @@
+---
+layout: default
+title: Publications
+page_class: publications
+description: Publications by Zheng Jiang in social computing, AI behavior, geospatial AI, and ocean AI.
+---
+
+<div class="page-wrapper inner-page">
+  <header class="page-heading">
+    <h1>Publications</h1>
+  </header>
+
+  <div class="publication-filters" role="group" aria-label="Filter publications by research category">
+    {% for filter in site.data.publication_filters %}
+      <button class="filter-button{% if forloop.first %} is-active{% endif %}" type="button" data-filter="{{ filter.label }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
+        <span>{{ filter.label }}</span><span class="filter-count">{{ filter.count }}</span>
+      </button>
+    {% endfor %}
+  </div>
+  <p class="filter-status" aria-live="polite" data-filter-status>Showing all 17 publications.</p>
+
+  <ol class="publication-list" data-publication-list>
+    {% for publication in site.data.publications %}
+      <li class="publication-item" id="{{ publication.id }}" data-tags="{{ publication.tags | join: '|' }}">
+        <div class="publication-body">
+          <h2>{{ publication.title }}</h2>
+          <p class="publication-authors">
+            {% for author in publication.authors %}{% if author.self %}<strong class="self-author">{{ author.name }}</strong>{% else %}{{ author.name }}{% endif %}{% if author.equal %}<sup>*</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+          </p>
+          <p class="publication-venue">{{ publication.venue }}{% unless publication.venue contains publication.year %}, {{ publication.year }}{% endunless %}</p>
+          {% if publication.links.size > 0 or publication.award %}
+            <div class="publication-meta">
+              {% for link in publication.links %}
+                <a class="resource-link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+                  {% if link.label == 'Code' %}{% include icon.html name='github' %}{% else %}{% include icon.html name='file' %}{% endif %}
+                  <span>[{{ link.label }}]</span>
+                </a>
+              {% endfor %}
+              {% if publication.award %}<span class="award-badge">{% include icon.html name='award' %} {{ publication.award }}</span>{% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+  <p class="contribution-note"><sup>*</sup> denotes equal contribution.</p>
+</div>

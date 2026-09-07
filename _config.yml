@@ -1,0 +1,22 @@
+title: Zheng Jiang
+email: nicezheng.jiang@gmail.com
+description: >-
+  Academic homepage of Zheng Jiang, a Ph.D. candidate at Beijing University
+  of Posts and Telecommunications researching social computing, human-AI
+  decision-making, and AI for science.
+url: "https://nicezheng.github.io"
+baseurl: ""
+lang: en
+timezone: Asia/Shanghai
+markdown: kramdown
+strict_front_matter: true
+theme:
+
+exclude:
+  - cv-source
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - test
+  - tmp
+  - vendor

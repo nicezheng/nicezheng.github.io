@@ -1,2 +1,7 @@
-.history/
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/
+tmp/pdfs/
 .DS_Store

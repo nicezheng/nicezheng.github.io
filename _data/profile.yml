@@ -1,0 +1,52 @@
+name: Zheng Jiang
+chinese_name: 蒋政
+position: Ph.D. Candidate
+field: Intelligent Science and Technology
+school:
+  name: School of Artificial Intelligence
+  url: https://ai.bupt.edu.cn/
+institution:
+  name: Beijing University of Posts and Telecommunications
+  short_name: BUPT
+  url: https://www.bupt.edu.cn/
+location: Beijing, China
+email: nicezheng.jiang@gmail.com
+advisors:
+  primary: Wei Wang
+  co_supervisor: Yi Wang
+bio:
+  - >-
+    Hi there! I am currently a Ph.D. candidate at the
+    <a href="https://ai.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">School of Artificial Intelligence</a>,
+    <a href="https://www.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">Beijing University of Posts and Telecommunications (BUPT)</a>,
+    advised by Wei Wang and co-supervised by Yi Wang.
+  - >-
+    My research interests include <strong>social computing, human-AI
+    decision-making, and AI for science</strong>. I study how people and AI
+    make decisions from social signals, how large language models represent
+    human values, and how physics- and domain-informed AI can support
+    geospatial and ocean science.
+contact_note: >-
+  Feel free to contact me by email if you are interested in discussing or
+  collaborating with me.
+social_links:
+  - label: Google Scholar
+    icon: scholar
+    url: https://scholar.google.com/citations?user=b60BQmoAAAAJ&hl=zh-CN
+    external: true
+  - label: GitHub
+    icon: github
+    url: https://github.com/nicezheng
+    external: true
+  - label: X
+    icon: twitter
+    url: https://x.com/NicezhengJiang
+    external: true
+  - label: LinkedIn
+    icon: linkedin
+    url: https://www.linkedin.com/in/zheng-jiang-a55502283/
+    external: true
+  - label: CV
+    icon: file
+    url: /assets/files/Zheng_Jiang_CV.pdf
+    external: false
