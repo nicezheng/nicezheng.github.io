@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.2)  8 SEP 2026 11:57
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.2)  9 SEP 2026 09:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -355,8 +355,7 @@ Package fontspec Info:
 (fontspec)             <->"[texgyreheros-bolditalic.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
 
 Package hyperref Info: Option `colorlinks' set `true' on input line 39.
-
-No file Zheng_Jiang_CV.aux.
+ (./Zheng_Jiang_CV.aux)
 \openout1 = `Zheng_Jiang_CV.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
@@ -379,6 +378,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
 LaTeX Font Info:    ... okay on input line 69.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
 LaTeX Font Info:    ... okay on input line 69.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -488,13 +488,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package hyperref Info: Link coloring ON on input line 69.
+(./Zheng_Jiang_CV.out) (./Zheng_Jiang_CV.out)
 \@outlinefile=\write3
 \openout3 = `Zheng_Jiang_CV.out'.
 
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
-(/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
 Underfull \hbox (badness 10000) in paragraph at lines 108--110
 
  []
@@ -505,15 +503,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 143.
-
 [1
 
 ]
-
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 178.
 
 [2]
 Underfull \hbox (badness 10000) in paragraph at lines 209--212
@@ -527,9 +519,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 214--218
 
 
 
-
-LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 219.
-
 [3] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./Zheng_Jiang_CV.aux)
@@ -537,32 +526,16 @@ enddocument/afterlastpage (AED): lastpage setting LastPage.
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Zheng_Jiang_CV.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Zheng_Jiang_CV.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  6AF5724D7AD6ABC99D5CF5B3B75DB4E7;648.
-
-Package lastpage Warning: Rerun to get the references right on input line 219.
-
+Package rerunfilecheck Info: File `Zheng_Jiang_CV.out' has not changed.
+(rerunfilecheck)             Checksum: 6AF5724D7AD6ABC99D5CF5B3B75DB4E7;648.
  ) 
 Here is how much of TeX's memory you used:
- 14233 strings out of 473832
- 281748 string characters out of 5729482
- 775678 words of memory out of 5000000
- 37150 multiletter control sequences out of 15000+600000
- 562152 words of font info for 73 fonts, out of 8000000 for 9000
+ 14236 strings out of 473832
+ 281609 string characters out of 5729482
+ 775727 words of memory out of 5000000
+ 37149 multiletter control sequences out of 15000+600000
+ 562136 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 79i,11n,93p,1079b,661s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,11n,93p,1079b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on Zheng_Jiang_CV.pdf (3 pages).

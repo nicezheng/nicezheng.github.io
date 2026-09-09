@@ -288,7 +288,7 @@
     - label: Code
       url: https://github.com/nicezheng/FenGePad-Model
   tags:
-    - AI4GeospatialScience
+    - AI4Geography
 
 - id: dcv2i-ai-magazine
   title: "DCV²I: Leveraging Deep Vision Models to Support Geographers' Visual Interpretation in Dune Segmentation"
@@ -315,7 +315,7 @@
     - label: Code
       url: https://doi.org/10.6084/m9.figshare.24564874
   tags:
-    - AI4GeospatialScience
+    - AI4Geography
 
 - id: dunesa
   title: "DuneSA: A SAM-Based Approach with Domain-Specific Knowledge for Aeolian Dune Segmentation"
@@ -340,7 +340,7 @@
     - label: Paper
       url: https://dl.acm.org/doi/epdf/10.1145/3677525.3678637
   tags:
-    - AI4GeospatialScience
+    - AI4Geography
 
 - id: fenge
   title: FenGe—An Interactive Framework for Improving the Utility of Deep Dune Segmentation in Geographical Tasks
@@ -365,7 +365,7 @@
     - label: Paper
       url: https://journals.sagepub.com/doi/epdf/10.3233/FAIA240831
   tags:
-    - AI4GeospatialScience
+    - AI4Geography
 
 - id: dcv2i-iaai
   title: "DCV2I: A Practical Approach for Supporting Geographers' Visual Interpretation in Dune Segmentation with Deep Vision Models"
@@ -388,7 +388,7 @@
     - label: Paper
       url: https://ojs.aaai.org/index.php/AAAI/article/view/30313
   tags:
-    - AI4GeospatialScience
+    - AI4Geography
   award: Deployed Application Award
 
 - id: cooperation-heterogeneous-preferences

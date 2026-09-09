@@ -63,12 +63,12 @@
   related_publication_ids:
     - value-atlas-ai
 
-- id: ai-geospatial-science
-  title: AI for Geospatial Science
+- id: ai-geography
+  title: AI for Geography
   accent: "#378ADD"
   paragraphs:
     - >-
-      My geospatial AI research focuses on dune interpretation and segmentation
+      My geographical AI research focuses on dune interpretation and segmentation
       as a progressively more realistic scientific workflow. The starting
       point is manual segmentation, where domain experts identify dune
       boundaries directly from imagery. This process is accurate but expensive

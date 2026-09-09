@@ -9,7 +9,7 @@ class SiteAcceptanceTest < Minitest::Test
     "AI Behavior" => 4,
     "Social Computing" => 7,
     "AI4OceanScience" => 3,
-    "AI4GeospatialScience" => 5,
+    "AI4Geography" => 5,
     "Other" => 2
   }.freeze
 
