@@ -10,6 +10,7 @@
     - name: Yi Wang
       self: false
   venue: IC2S2 2026
+  venue_url: https://2026.ic2s2.net/
   year: 2026
   links: []
   tags:
@@ -30,6 +31,7 @@
     - name: Yi Wang
       self: false
   venue: ACL 2026 Findings
+  venue_url: https://2026.aclweb.org/program/findings/
   year: 2026
   links:
     - label: Paper
@@ -62,9 +64,10 @@
     - name: Yi Wang
       self: false
   venue: IJCAI 2026 · AI and Social Good
+  venue_url: https://2026.ijcai.org/ijcai-ecai-2026-call-for-papers-ai4good/
   year: 2026
   links:
-    - label: Project Proposal
+    - label: Paper
       url: https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4G39.pdf
   tags:
     - AI4OceanScience
@@ -83,6 +86,7 @@
     - name: Yi Wang
       self: false
   venue: CogSci 2026
+  venue_url: https://cognitivesciencesociety.org/cogsci-2026/
   year: 2026
   links:
     - label: Paper
@@ -135,6 +139,7 @@
     - name: Yi Wang
       self: false
   venue: AAAI 2026 · AI for Social Impact
+  venue_url: https://aaai.org/conference/aaai/aaai-26/aisi-call/
   year: 2026
   links:
     - label: Paper
@@ -154,6 +159,7 @@
     - name: Yi Wang
       self: false
   venue: ICSE 2026 · Future of Software Engineering
+  venue_url: https://conf.researchr.org/track/icse-2026/icse-2026-future-of-software-engineering
   year: 2026
   links:
     - label: Paper
@@ -229,6 +235,7 @@
     - name: Yi Wang
       self: false
   venue: PLOS ONE
+  venue_url: https://journals.plos.org/plosone/
   year: 2025
   links:
     - label: Paper
@@ -251,7 +258,8 @@
       self: false
     - name: Yi Wang
       self: false
-  venue: IEEE Symposium on Security and Privacy (S&P)
+  venue: IEEE S&P
+  venue_url: https://www.ieee-security.org/TC/SP2025/
   year: 2025
   links:
     - label: Paper
@@ -280,7 +288,8 @@
       self: false
     - name: Yi Wang
       self: false
-  venue: ECAI 2025 · PAIS
+  venue: ECAI 2025 · Prestigious Applications of Intelligent Systems
+  venue_url: https://ecai2025.org/call-for-pais-papers/
   year: 2025
   links:
     - label: Paper
@@ -308,6 +317,7 @@
     - name: Yi Wang
       self: false
   venue: AI Magazine
+  venue_url: https://onlinelibrary.wiley.com/journal/23719621
   year: 2024
   links:
     - label: Paper
@@ -335,6 +345,7 @@
     - name: Yi Wang
       self: false
   venue: GoodIT 2024
+  venue_url: https://blogs.uni-bremen.de/goodit2024/
   year: 2024
   links:
     - label: Paper
@@ -360,6 +371,7 @@
     - name: Yi Wang
       self: false
   venue: ECAI 2024
+  venue_url: https://www.ecai2024.eu/
   year: 2024
   links:
     - label: Paper
@@ -382,7 +394,8 @@
       self: false
     - name: Yi Wang
       self: false
-  venue: IAAI 2024
+  venue: AAAI 2024 · Innovative Applications of Artificial Intelligence
+  venue_url: https://aaai.org/aaai-24-conference/iaai-24-program/
   year: 2024
   links:
     - label: Paper
@@ -405,6 +418,7 @@
     - name: Yi Wang
       self: false
   venue: CogSci 2024
+  venue_url: https://cognitivesciencesociety.org/past-conferences/
   year: 2024
   links:
     - label: Paper

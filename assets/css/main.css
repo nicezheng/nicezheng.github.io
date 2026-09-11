@@ -392,6 +392,17 @@ a:hover .icon {
   list-style: none;
 }
 
+.service-list {
+  margin: 0 0 0 22px;
+  padding: 0;
+}
+
+.service-item {
+  padding: 3px 0;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
 .education-item,
 .award-item,
 .teaching-item {
@@ -619,6 +630,11 @@ a:hover .icon {
 .publication-venue {
   color: #333;
   font-style: italic;
+}
+
+.publication-venue-link,
+.publication-venue-link:visited {
+  color: var(--brand-color);
 }
 
 .publication-meta {

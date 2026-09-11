@@ -33,7 +33,7 @@ class SiteAcceptanceTest < Minitest::Test
     assert_equal "Zheng Jiang", profile.fetch("name")
     assert_equal "蒋政", profile.fetch("chinese_name")
     assert_equal "nicezheng.jiang@gmail.com", profile.fetch("email")
-    assert_equal "Ph.D. Candidate", profile.fetch("position")
+    assert_equal "Ph.D.", profile.fetch("position")
     assert_equal %w[Google\ Scholar GitHub X LinkedIn CV], profile.fetch("social_links").map { |link| link.fetch("label") }
     profile.fetch("social_links").each { |link| refute_empty link.fetch("url") }
     assert_equal "/assets/files/Zheng_Jiang_CV.pdf", profile.fetch("social_links").last.fetch("url")
@@ -42,7 +42,9 @@ class SiteAcceptanceTest < Minitest::Test
   def test_all_resume_content_is_present
     assert_equal 11, data("activities").length
     assert_equal 2, data("education").length
-    assert_equal 3, data("awards").length
+    assert_equal 4, data("awards").length
+    assert_path_exists File.join(ROOT, "_data", "services.yml")
+    assert_equal 2, data("services").length
     assert_equal 4, data("teaching").length
     assert_equal 4, data("research").length
     assert_equal 17, data("publications").length
@@ -63,6 +65,11 @@ class SiteAcceptanceTest < Minitest::Test
         assert_match %r{\Ahttps://}, link.fetch("url"), "publication resources should use HTTPS"
         assert_includes %w[Paper Code Project\ Proposal Data], link.fetch("label")
       end
+
+      next if publication.fetch("venue") == "Preprint"
+
+      assert publication.key?("venue_url"), "formal venue should link to its official page: #{publication.fetch('id')}"
+      assert_match %r{\Ahttps://}, publication.fetch("venue_url"), "venue links should use HTTPS"
     end
 
     EXPECTED_TAG_COUNTS.each do |tag, expected_count|
@@ -134,6 +141,24 @@ class SiteAcceptanceTest < Minitest::Test
     activity_list = home_document.at_css("[data-activity-list]")
     refute_nil activity_list["id"], "activity list needs an id for aria-controls"
     assert_equal activity_list["id"], activity_toggle["aria-controls"]
+  end
+
+  def test_homepage_services_and_publication_venue_links_are_rendered
+    home = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "index.html"), encoding: "UTF-8"))
+    publications = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "publications.html"), encoding: "UTF-8"))
+
+    assert_equal "Services", home.at_css("#services-heading")&.text&.strip
+    assert_equal 2, home.css("li.service-item").length
+    assert_includes home.text, "Program Committee"
+    assert_includes home.text, "Reviewer"
+
+    formal_venue_count = data("publications").count { |publication| publication.fetch("venue") != "Preprint" }
+    assert_equal formal_venue_count, publications.css("a.publication-venue-link").length
+    publications.css("a.publication-venue-link").each do |link|
+      assert_equal "_blank", link["target"]
+      assert_includes link["rel"].to_s.split, "noopener"
+      assert_includes link["rel"].to_s.split, "noreferrer"
+    end
   end
 
   def test_reference_style_uses_clean_headings_compact_lists_and_real_icons
