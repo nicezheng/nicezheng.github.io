@@ -1,11 +1,9 @@
-# CV template license and attribution
+# CV source license
 
-The typography and structure of `Zheng_Jiang_CV.tex` were informed by Pascal
-Michaillat's minimalist LaTeX academic CV template:
-https://github.com/pmichaillat/latex-cv
-
-That template is distributed under the MIT License. The original layout code
-in this project is also made available under the MIT License:
+`Zheng_Jiang_CV.tex` is an original implementation created for this project.
+Its compact single-column academic presentation was visually informed by CVs
+shared publicly by other researchers, but it does not incorporate third-party
+LaTeX source code. This source is made available under the MIT License:
 
 Copyright (c) 2026 Zheng Jiang
 

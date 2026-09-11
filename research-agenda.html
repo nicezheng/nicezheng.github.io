@@ -2,7 +2,7 @@
 layout: default
 title: Research Agenda
 page_class: research
-description: Zheng Jiang's research agenda across human-AI decision-making, LLM values, geographical AI, and ocean AI.
+description: Zheng Jiang's research agenda across open-source human-AI collaboration, geopolitical bias and pluralistic AI, AI for geography, and AI for ocean science.
 ---
 
 <div class="page-wrapper inner-page">
@@ -13,7 +13,19 @@ description: Zheng Jiang's research agenda across human-AI decision-making, LLM 
   <div class="research-direction-list">
     {% for card in site.data.research %}
       <section class="research-direction" id="{{ card.id }}" style="--direction-accent: {{ card.accent }};">
-        <h2>{{ card.title }}</h2>
+        <h2 class="visually-hidden">{{ card.title }}</h2>
+        <figure class="research-visual">
+          <a href="{{ card.image | relative_url }}" aria-label="View the full-size research roadmap for {{ card.title }}">
+            <img
+              src="{{ card.image | relative_url }}"
+              alt="{{ card.image_alt }}"
+              width="{{ card.image_width }}"
+              height="{{ card.image_height }}"
+              decoding="async"
+              {% unless forloop.first %}loading="lazy"{% endunless %}
+            >
+          </a>
+        </figure>
         <div class="prose">
           {% for paragraph in card.paragraphs %}
             {{ paragraph | markdownify }}

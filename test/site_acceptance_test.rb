@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require "nokogiri"
+require "open3"
 require "yaml"
 
 class SiteAcceptanceTest < Minitest::Test
@@ -33,7 +34,7 @@ class SiteAcceptanceTest < Minitest::Test
     assert_equal "Zheng Jiang", profile.fetch("name")
     assert_equal "蒋政", profile.fetch("chinese_name")
     assert_equal "nicezheng.jiang@gmail.com", profile.fetch("email")
-    assert_equal "Ph.D.", profile.fetch("position")
+    assert_equal "Ph.D. Candidate", profile.fetch("position")
     assert_equal %w[Google\ Scholar GitHub X LinkedIn CV], profile.fetch("social_links").map { |link| link.fetch("label") }
     profile.fetch("social_links").each { |link| refute_empty link.fetch("url") }
     assert_equal "/assets/files/Zheng_Jiang_CV.pdf", profile.fetch("social_links").last.fetch("url")
@@ -88,6 +89,31 @@ class SiteAcceptanceTest < Minitest::Test
     end
   end
 
+  def test_research_directions_render_the_selected_roadmaps_accessibly
+    research = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "research-agenda.html"), encoding: "UTF-8"))
+    expected_roadmaps = {
+      "human-ai-decision-making" => "/assets/images/research-roadmaps/human-ai-open-source.png",
+      "llm-values-ai-orientalism" => "/assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai-v3.png",
+      "ai-geography" => "/assets/images/research-roadmaps/ai-for-geography-v2.png",
+      "ai-ocean-science" => "/assets/images/research-roadmaps/ai-for-ocean-science-v2.png"
+    }
+
+    assert_equal expected_roadmaps.keys, research.css("section.research-direction").map { |section| section["id"] }
+
+    expected_roadmaps.each do |direction_id, image_path|
+      direction = research.at_css("section##{direction_id}")
+      figure = direction.at_css("figure.research-visual")
+      image = figure&.at_css("img")
+      link = figure&.at_css("a")
+
+      refute_nil figure, "#{direction_id} should render its research roadmap"
+      assert_equal image_path, image&.[]("src")
+      assert_equal image_path, link&.[]("href")
+      refute_empty image&.[]("alt").to_s
+      assert_includes direction.at_css("h2")["class"].to_s.split, "visually-hidden"
+    end
+  end
+
   def test_editable_cv_source_and_linked_pdf_exist
     tex_path = File.join(ROOT, "cv-source", "Zheng_Jiang_CV.tex")
     pdf_path = File.join(ROOT, "assets", "files", "Zheng_Jiang_CV.pdf")
@@ -96,11 +122,94 @@ class SiteAcceptanceTest < Minitest::Test
     assert_path_exists pdf_path
 
     tex = File.read(tex_path, encoding: "UTF-8")
-    normalized_tex = tex.gsub("\\&", "&").gsub("\\\\", "")
+    normalized_tex = tex
+      .gsub("\\&", "&")
+      .gsub("\\textsuperscript{2}", "²")
+      .gsub("---", "—")
+      .gsub("\\\\", "")
     assert_includes normalized_tex, "Zheng Jiang"
-    assert_includes normalized_tex, "Research Interests"
-    assert_includes normalized_tex, "Publications"
+    assert_includes normalized_tex, "RESEARCH INTERESTS"
+    assert_includes normalized_tex, "PUBLICATIONS"
     data("publications").each { |publication| assert_includes normalized_tex, publication.fetch("title") }
+  end
+
+  def test_cv_pdf_uses_two_page_letter_layout
+    pdf_path = File.join(ROOT, "assets", "files", "Zheng_Jiang_CV.pdf")
+    info, error, status = Open3.capture3("pdfinfo", pdf_path)
+
+    assert status.success?, "pdfinfo failed: #{error}"
+    assert_match(/^Pages:\s+2$/, info)
+    assert_match(/^Page size:\s+612 x 792 pts \(letter\)$/, info)
+  end
+
+  def test_cv_pdf_contains_all_requested_sections
+    pdf_path = File.join(ROOT, "assets", "files", "Zheng_Jiang_CV.pdf")
+    text, error, status = Open3.capture3("pdftotext", "-layout", pdf_path, "-")
+    text = text.force_encoding("UTF-8").scrub
+
+    assert status.success?, "pdftotext failed: #{error}"
+    %w[RESEARCH\ INTERESTS EDUCATION PUBLICATIONS HONORS\ AND\ AWARDS SERVICES TEACHING\ EXPERIENCE].each do |heading|
+      assert_includes text, heading
+    end
+    assert_includes text, "Ph.D. Candidate"
+    assert_includes text, "Phone: +86 156 7831 2406"
+    assert_includes text, "Email: nicezheng.jiang@gmail.com"
+    assert_includes text, "Website: nicezheng.github.io"
+    assert_includes text, "LinkedIn"
+    assert_includes text, "X"
+    data("awards").each { |award| assert_includes text, award.fetch("title") }
+    data("services").each { |service| assert_includes text, service.fetch("role") }
+    data("teaching").each { |item| assert_includes text, item.fetch("course") }
+    publication_numbers = text.scan(/^\s*(\d+)\.\s/).flatten.map(&:to_i)
+    assert_equal (1..17).to_a, publication_numbers
+    refute_includes text, "Program CommitteeAAAI"
+
+    pages = text.split("\f").reject { |page| page.strip.empty? }
+    assert_equal 2, pages.length
+  end
+
+  def test_cv_publications_use_full_venue_names_without_resource_links
+    pdf_path = File.join(ROOT, "assets", "files", "Zheng_Jiang_CV.pdf")
+    text, error, status = Open3.capture3("pdftotext", "-layout", pdf_path, "-")
+    text = text.force_encoding("UTF-8").scrub.gsub(/\s+/, " ")
+
+    assert status.success?, "pdftotext failed: #{error}"
+    expected_venues = [
+      "12th International Conference on Computational Social Science (IC2S2), 2026.",
+      "Findings of the Association for Computational Linguistics (ACL Findings), 2026.",
+      "35th International Joint Conference on Artificial Intelligence (IJCAI-ECAI), AI and Social Good Track, 2026.",
+      "48th Annual Meeting of the Cognitive Science Society (CogSci), 2026.",
+      "40th Annual AAAI Conference on Artificial Intelligence (AAAI), AI for Social Impact Track, 2026.",
+      "IEEE/ACM International Conference on Software Engineering (ICSE), Future of Software Engineering Track, 2026.",
+      "46th IEEE Symposium on Security and Privacy (S&P), 2025.",
+      "28th European Conference on Artificial Intelligence (ECAI), Prestigious Applications of Intelligent Systems (PAIS), 2025.",
+      "4th ACM International Conference on Information Technology for Social Good (GoodIT), 2024.",
+      "27th European Conference on Artificial Intelligence (ECAI), 2024.",
+      "38th AAAI Conference on Artificial Intelligence (AAAI), Innovative Applications of Artificial Intelligence (IAAI), 2024.",
+      "46th Annual Meeting of the Cognitive Science Society (CogSci), 2024."
+    ]
+    expected_venues.each { |venue| assert_includes text, venue }
+    refute_match(/\[(?:Paper|Code)\]/, text)
+
+    urls, url_error, url_status = Open3.capture3("pdfinfo", "-url", pdf_path)
+    assert url_status.success?, "pdfinfo -url failed: #{url_error}"
+    data("publications").flat_map { |publication| publication.fetch("links") }.each do |link|
+      refute_includes urls, link.fetch("url")
+    end
+    refute_includes urls, "https://aaai.org/conference/aaai/aaai-26/aisi-call/"
+    refute_includes urls, "https://neurips.cc/Conferences/2026"
+  end
+
+  def test_cv_first_page_fills_before_the_natural_page_break
+    pdf_path = File.join(ROOT, "assets", "files", "Zheng_Jiang_CV.pdf")
+    bbox, error, status = Open3.capture3("pdftotext", "-bbox", pdf_path, "-")
+
+    assert status.success?, "pdftotext -bbox failed: #{error}"
+    document = Nokogiri::XML(bbox)
+    first_page = document.at_xpath("//*[local-name()='page']")
+    refute_nil first_page
+    bottommost_text = first_page.xpath(".//*[local-name()='word']").map { |word| word["yMax"].to_f }.max
+    assert_operator bottommost_text, :>, 650.0
   end
 
   def test_source_has_no_reference_author_or_placeholder_content

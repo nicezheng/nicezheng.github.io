@@ -1,6 +1,6 @@
 name: Zheng Jiang
 chinese_name: 蒋政
-position: Ph.D.
+position: Ph.D. Candidate
 field: Intelligent Science and Technology
 school:
   name: School of Artificial Intelligence
@@ -16,16 +16,16 @@ advisors:
   co_supervisor: Yi Wang
 bio:
   - >-
-    Hi there! I am currently a Ph.D. at the
+    Hi there! I am currently a Ph.D. candidate at the
     <a href="https://ai.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">School of Artificial Intelligence</a>,
     <a href="https://www.bupt.edu.cn/" target="_blank" rel="noopener noreferrer">Beijing University of Posts and Telecommunications (BUPT)</a>,
     advised by Wei Wang and co-supervised by Yi Wang.
   - >-
-    My research interests include <strong>social computing, human-AI
-    decision-making, and AI for science</strong>. I study how people and AI
-    make decisions from social signals, how large language models represent
-    human values, and how physics- and domain-informed AI can support
-    geography and ocean science.
+    My research spans <strong>AI in social systems and AI for science</strong>.
+    In social systems, I study collaboration decisions in open-source
+    communities and geopolitical bias in how large language models represent
+    human values. In AI for science, I develop domain- and physics-informed
+    methods for geography and ocean forecasting.
 contact_note: >-
   Feel free to contact me by email if you are interested in discussing or
   collaborating with me.
