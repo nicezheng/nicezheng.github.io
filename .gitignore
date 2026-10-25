@@ -7,3 +7,24 @@ tmp/
 # Manuscript source archives belong in ../paper-library/, never in this repo.
 *.zip
 .DS_Store
+
+# Local planning notes and editor-generated files (not website content).
+/docs/
+/tstex_modules/
+
+# Keep the editable CV and license; publish only assets/files/Zheng_Jiang_CV.pdf.
+/cv-source/*.aux
+/cv-source/*.log
+/cv-source/*.out
+/cv-source/*.synctex.gz
+/cv-source/*.fls
+/cv-source/*.fdb_latexmk
+/cv-source/*.pdf
+
+# Retired configuration and roadmap drafts, retained locally for reference.
+/_data/publication_filters.yml
+/assets/images/research-roadmaps/ai-for-geography.png
+/assets/images/research-roadmaps/ai-for-ocean-science.png
+/assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai.png
+/assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai-v2.png
+/assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai-v3.png

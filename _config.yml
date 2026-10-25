@@ -16,6 +16,9 @@ theme:
 google_site_verification: "OtCNi8U7JYtmkg-76_UyNdpLYF_O6UXMAQ4OZmYEJvU"
 
 exclude:
+  # Exclude local-only files even when building from a working checkout.
+  - docs
+  - tstex_modules
   - cv-source
   - Gemfile
   - Gemfile.lock
@@ -24,3 +27,9 @@ exclude:
   - scripts
   - tmp
   - vendor
+  - _data/publication_filters.yml
+  - assets/images/research-roadmaps/ai-for-geography.png
+  - assets/images/research-roadmaps/ai-for-ocean-science.png
+  - assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai.png
+  - assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai-v2.png
+  - assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai-v3.png

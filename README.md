@@ -33,6 +33,31 @@ no manual renumbering or JavaScript is needed when adding a paper.
 The website links to `assets/files/Zheng_Jiang_CV.pdf`. A future CV can replace
 that PDF without changing the page templates.
 
+## What belongs in Git and on the public website
+
+- **Tracked and published:** website pages and assets, the selected four research
+  roadmaps, the public CV PDF, and released papers with their abstract pages and
+  citation files. Jekyll uses tracked `_data`, `_includes`, and `_layouts` to build
+  those pages; it does not serve those source directories directly.
+- **Tracked for maintenance, not served:** `README.md`, `Gemfile`, `Gemfile.lock`,
+  `scripts/`, `test/`, and the editable CV `.tex` source and license in `cv-source/`.
+- **Local only:** `docs/` planning notes, `tstex_modules/`, `.DS_Store`, CV build
+  intermediates and duplicate PDF, the retired filter configuration and five old
+  roadmap images listed in `.gitignore`, preview snapshots, caches, and dependencies.
+- **Private manuscript inputs:** keep ZIPs and LaTeX projects in `../paper-library/`,
+  outside this repository. The Chinese resume remains outside this repository too.
+
+`.gitignore` controls new Git additions; `_config.yml` exclusions control Jekyll
+output. Both are needed because an ignored file can still exist in a local build,
+and excluding a file from Jekyll does not hide it in a public GitHub repository.
+Already tracked files must also be removed from the Git index with `git rm --cached`
+to stop future uploads while preserving their local copies. This does not erase
+copies from older commits.
+
+The sitemap should contain the four public site pages plus released paper abstract
+pages, never development notes. Acceptance tests check this boundary and confirm
+that only the selected roadmap images are included in the build.
+
 ## Rebuilding the CV
 
 The editable source is `cv-source/Zheng_Jiang_CV.tex`. With TeX Live and

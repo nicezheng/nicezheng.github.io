@@ -385,6 +385,29 @@ class SiteAcceptanceTest < Minitest::Test
     assert_match %r{\A/assets/css/main\.css\?v=\d+\z}, urls.first
   end
 
+  def test_sitemap_lists_only_public_pages_and_released_papers
+    document = Nokogiri::XML(File.read(File.join(ROOT, "_site", "sitemap.xml"))) { |config| config.strict.nonet }
+    origin = "https://nicezheng.github.io"
+    expected = %w[/ /research-agenda.html /publications.html /teaching.html].map { |path| origin + path }
+    Dir.glob(File.join(ROOT, "_data/hosted_papers/*.yml")).each do |path|
+      paper = YAML.safe_load_file(path)
+      expected << "#{origin}/papers/#{paper.fetch('id')}/" unless paper["preview"]
+    end
+    locations = document.xpath("/s:urlset/s:url/s:loc", "s" => "http://www.sitemaps.org/schemas/sitemap/0.9").map(&:text)
+    assert_equal expected.sort, locations.sort, "development notes must not become indexed website pages"
+    assert_equal locations.uniq, locations
+  end
+
+  def test_build_omits_development_files_and_retired_images
+    %w[docs tstex_modules cv-source test scripts tmp vendor README.md Gemfile Gemfile.lock].each do |path|
+      refute_path_exists File.join(ROOT, "_site", path), "development-only files must not be publicly served: #{path}"
+    end
+    selected_images = data("research").flat_map { |direction| direction.fetch("topics").map { |topic| topic.fetch("image") } }
+    built_images = Dir.glob(File.join(ROOT, "_site/assets/images/research-roadmaps/*")).map { |path| path.delete_prefix(File.join(ROOT, "_site")) }
+    assert_equal selected_images.sort, built_images.sort, "retired roadmap images should stay local"
+    assert_empty Dir.glob(File.join(ROOT, "_site/**/*.{zip,tex,aux,log,out,synctex.gz}"))
+  end
+
   def test_built_internal_links_assets_fragments_and_external_link_safety
     built_pages = EXPECTED_ROUTES.map { |route| File.join(ROOT, "_site", route) }
 
