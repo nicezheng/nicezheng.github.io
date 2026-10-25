@@ -1,149 +1,112 @@
-- id: human-ai-decision-making
-  title: Human–AI Collaboration in Open-Source Communities
-  accent: "#7F77DD"
-  image: /assets/images/research-roadmaps/human-ai-open-source.png
-  image_alt: >-
-    Research roadmap illustrating how developer profiles and social signals
-    shape human and AI collaboration decisions in open-source communities.
-  image_width: 1672
-  image_height: 940
-  paragraphs:
-    - >-
-      Open-source contributors often decide whether and how to collaborate with
-      people they do not know. Platforms surface developer profiles,
-      contribution histories, and activity summaries that may be used to infer
-      a potential collaborator's experience, commitment, or reliability. I
-      study these forms of developer information as social signals and ask
-      whether making more activity visible actually leads to more effective and
-      inclusive collaboration.
-    - >-
-      Using GitHub Activity Overview as a case, my work shows that greater
-      visibility does not necessarily improve collaboration outcomes. The
-      information may be overlooked, interpreted inconsistently, or trigger
-      behavior that weakens its intended effect. I then compare how humans and
-      LLMs interpret the same information, which cues they rely on, and where
-      their decisions diverge.
-    - >-
-      As LLMs assume more roles in software development and community
-      coordination, developer information may be created, reviewed, and acted
-      on by both people and AI. My long-term goal is to design and evaluate
-      better profiles, summaries, and visualizations for human–human,
-      human–AI, and AI–AI collaboration. I am particularly interested in how
-      information design can improve contributor success, lower barriers for
-      newcomers, strengthen trust, and support sustainable open-source
-      communities.
-  related_publication_ids:
-    - verify-unverifiable-platform
-    - human-llm-unverifiable-decisions
-    - llms-unverifiable-scenarios
-    - paradox-being-seen
-    - commitment-cooperation
-    - cooperation-heterogeneous-preferences
+- id: ai-and-society
+  title: AI & Society
+  accent: "#6750A4"
+  framing: Human–AI collaboration and pluralistic value representation
+  introduction: >-
+    I study how AI understands and participates in social life: human–AI
+    collaboration at the micro level, and the representation of diverse
+    societies and values at the macro level.
+  topics:
+    - id: human-ai-decision-making
+      level: Micro level
+      title: Human–AI Collaboration
+      paragraphs:
+        - >-
+          How can people and AI build trust, coordinate contributions, and
+          sustain collective action? I work on the mechanisms and
+          infrastructures that allow people and AI agents to collaborate as
+          capable, accountable participants in open-source communities and
+          other collective settings.
+        - >-
+          I am working on how social information is represented, interpreted,
+          and acted on, and on interfaces and feedback mechanisms that improve
+          mutual understanding and coordination. The goal is to make human–AI
+          collaboration more trustworthy, inclusive, and sustainable as AI
+          agents take on increasingly autonomous roles.
+      image: /assets/images/research-roadmaps/human-ai-open-source.png
+      image_alt: >-
+        Research roadmap connecting social information, human and AI
+        decision-making, and collaborative system design in open-source communities.
+      image_width: 1672
+      image_height: 940
+    - id: llm-values-ai-orientalism
+      level: Macro level
+      title: AI Orientalism and Pluralistic AI
+      paragraphs:
+        - >-
+          How can AI represent a pluralistic world without reducing people
+          and societies to stereotypes? I study AI Orientalism and other
+          geopolitical biases in how models represent human values, and
+          investigate how these distortions arise across data, languages,
+          and model behavior.
+        - >-
+          I am working toward pluralistic AI through culturally grounded
+          evaluation, more diverse sources of evidence, and feedback from
+          the communities being represented. The goal is to improve how AI
+          learns, expresses, and adapts to diverse and sometimes conflicting
+          perspectives, while preserving differences within as well as
+          across societies.
+      image: /assets/images/research-roadmaps/ai-orientalism-pluralistic-ai.png
+      image_alt: >-
+        Research roadmap mapping diverse human values, diagnosing AI
+        Orientalism, and improving pluralistic AI through community feedback
+        and ongoing evaluation, with a world map as geographic context.
+      image_width: 1672
+      image_height: 941
 
-- id: llm-values-ai-orientalism
-  title: Geopolitical Bias and Pluralistic AI
-  accent: "#D84C19"
-  image: /assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai-v3.png
-  image_alt: >-
-    Research roadmap comparing human and LLM value landscapes across societies
-    to identify geopolitical bias and support pluralistic AI.
-  image_width: 1672
-  image_height: 941
-  paragraphs:
-    - >-
-      Large language models increasingly generate content and make judgments
-      across cultural and geopolitical contexts, yet they may not represent the
-      values of all societies with equal fidelity. My research compares
-      LLM-generated value profiles with empirical data on human values to examine
-      whose values models reproduce, which societies they simplify or
-      misrepresent, and whether dominant geopolitical perspectives appear as
-      systematic distortions.
-    - >-
-      I study bias as a global representational structure rather than a set of
-      isolated wrong answers. My work maps which societies models portray as
-      more similar, more different, or more homogeneous than human data
-      suggests. We characterize one such pattern as AI Orientalism, extending
-      Said's theoretical lens to the asymmetric representations produced by
-      contemporary generative AI.
-    - >-
-      Going forward, I will test whether these patterns persist across
-      languages, models, social scenarios, and multimodal generation, and
-      examine their relationship to training-data coverage and provenance.
-      This work contributes to a broader vision of pluralistic AI: systems that
-      can recognize diverse, sometimes conflicting value systems without
-      reducing them to a single dominant cultural perspective.
-  related_publication_ids:
-    - value-atlas-ai
-
-- id: ai-geography
-  title: AI for Geography
-  accent: "#378ADD"
-  image: /assets/images/research-roadmaps/ai-for-geography-v2.png
-  image_alt: >-
-    Research roadmap from dune imagery and expert interpretation to
-    dune-specific AI, interactive refinement, and field deployment.
-  image_width: 1672
-  image_height: 941
-  paragraphs:
-    - >-
-      Geographic research often depends on expert interpretation of complex
-      visual evidence, but manual workflows are slow and difficult to scale. My
-      research asks how AI can support the full path from a geographic question
-      to field use. I use dune interpretation as a demanding testbed for
-      developing methods that combine domain knowledge, machine learning, and
-      expert judgment.
-    - >-
-      My work advances this workflow in stages: deep vision models embedded
-      in familiar GIS software; foundation models adapted with dune-specific
-      knowledge; interactive systems that let geographers correct ambiguous
-      boundaries; and tangible, multi-prompt interfaces for collaborative work
-      on mobile devices. Across these stages, I evaluate scientific utility and
-      integration with expert practice rather than segmentation accuracy alone.
-    - >-
-      The next stage is cloud–edge–device collaboration for field deployment. I
-      aim to distribute training, inference, interaction, and data
-      synchronization across cloud services, edge nodes, and portable devices,
-      while using field observations and expert feedback to improve models
-      continuously. The longer-term goal is a reusable AI-supported workflow
-      for geographic interpretation, validation, collaboration, and deployment.
-  related_publication_ids:
-    - fengepad
-    - dcv2i-ai-magazine
-    - dunesa
-    - fenge
-    - dcv2i-iaai
-
-- id: ai-ocean-science
-  title: AI for Ocean Science
-  accent: "#1E8A7A"
-  image: /assets/images/research-roadmaps/ai-for-ocean-science-v2.png
-  image_alt: >-
-    Research roadmap combining ocean observations and physical processes with
-    AI for sea-surface-temperature prediction and early warning of extremes.
-  image_width: 1672
-  image_height: 941
-  paragraphs:
-    - >-
-      Ocean extremes can develop rapidly and have substantial ecological and
-      societal consequences, making reliable early warning essential. My
-      research asks how artificial intelligence can improve the prediction of
-      ocean conditions and provide useful lead time before extreme events occur.
-    - >-
-      I develop ocean forecasting models that combine data-driven learning with
-      physical processes governing ocean evolution. My current work
-      incorporates processes such as advection, diffusion, and air–sea heat
-      exchange into neural dynamical models for sea surface temperature
-      prediction. This approach aims to produce forecasts informed by both
-      observations and ocean dynamics.
-    - >-
-      My longer-term goal is to move from predicting individual ocean variables
-      to forecasting extreme events as evolving physical processes. I am
-      particularly interested in predicting their onset, intensity, duration,
-      and spatial extent by combining physical constraints, multi-source
-      observations, and adaptive learning. The ultimate goal is to build
-      physics–AI forecasting systems that support earlier and more reliable
-      warning of ocean extremes.
-  related_publication_ids:
-    - ocean-heat-extremes-warning
-    - sstode
-    - ocean-parameters-review
+- id: ai-for-sustainable-development
+  title: AI for Sustainable Development
+  accent: "#1E7C70"
+  framing: Scientific knowledge and human expertise for environmental understanding
+  introduction: >-
+    I develop AI systems that integrate physical processes, scientific
+    knowledge, and human expertise to advance environmental understanding,
+    prediction, and decision-making.
+  topics:
+    - id: ai-geography
+      level: Geographic research
+      title: Human–AI Collaboration for Geographic Research
+      paragraphs:
+        - >-
+          How can domain experts collaborate naturally with AI throughout
+          geographic research? I work on interactive systems that let
+          researchers express knowledge, steer analysis, correct model
+          outputs, and evaluate results as part of their everyday workflows.
+          Dune interpretation provides a foundation for studying these
+          collaboration mechanisms in practice.
+        - >-
+          I am developing a continuous learning loop in which expert
+          interactions produce feedback and reusable knowledge that can
+          improve models, while improved models support more effective
+          collaboration. This agenda considers how AI systems evolve over
+          long-term use and adapt to new geographic settings, data, and
+          scientific questions.
+      image: /assets/images/research-roadmaps/ai-for-geography-v2.png
+      image_alt: >-
+        Research roadmap from dune observations and geographic knowledge to
+        interactive interpretation, expert validation, and field applications.
+      image_width: 1672
+      image_height: 941
+    - id: ai-ocean-science
+      level: Ocean science
+      title: Physics–AI Ocean Forecasting and Early Warning
+      paragraphs:
+        - >-
+          How can AI provide earlier and more reliable warning of ocean
+          extremes? I integrate physical ocean dynamics with data-driven
+          learning to model changing ocean conditions. Building on ocean
+          temperature forecasting, I study how scientific constraints and
+          observations can improve the reliability and interpretability of
+          predictions.
+        - >-
+          My longer-term goal is to move toward forecasting extreme events
+          across multiple processes and scales, including their onset,
+          intensity, duration, and spatial extent. This research connects
+          physical modeling with operational needs, aiming to support timely
+          warning and informed responses to environmental risks.
+      image: /assets/images/research-roadmaps/ai-for-ocean-science-v2.png
+      image_alt: >-
+        Research roadmap combining ocean observations, physical processes,
+        and AI for forecasting and early warning of ocean extremes.
+      image_width: 1672
+      image_height: 941

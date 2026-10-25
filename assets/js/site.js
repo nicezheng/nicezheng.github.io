@@ -1,10 +1,6 @@
-/* Progressive enhancements for navigation, activity disclosure, and filters. */
+/* Progressive enhancements for navigation and activity disclosure. */
 (function (root) {
   "use strict";
-
-  function publicationMatches(tags, activeTag) {
-    return activeTag === "All" || tags.includes(activeTag);
-  }
 
   function activityToggleLabel(isExpanded) {
     return isExpanded ? "Show fewer activities" : "Show all activities";
@@ -56,41 +52,7 @@
     render();
   }
 
-  function initializePublicationFilters() {
-    const buttons = Array.from(document.querySelectorAll("[data-filter]"));
-    const publications = Array.from(document.querySelectorAll(".publication-item"));
-    const status = document.querySelector("[data-filter-status]");
-    if (buttons.length === 0 || publications.length === 0 || !status) return;
-
-    function applyFilter(activeTag) {
-      let visibleCount = 0;
-
-      publications.forEach(function (publication) {
-        const tags = publication.dataset.tags.split("|").filter(Boolean);
-        const isVisible = publicationMatches(tags, activeTag);
-        publication.hidden = !isVisible;
-        if (isVisible) visibleCount += 1;
-      });
-
-      buttons.forEach(function (button) {
-        const isActive = button.dataset.filter === activeTag;
-        button.classList.toggle("is-active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-      });
-
-      status.textContent = activeTag === "All"
-        ? `Showing all ${visibleCount} publications.`
-        : `Showing ${visibleCount} ${activeTag} publication${visibleCount === 1 ? "" : "s"}.`;
-    }
-
-    buttons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        applyFilter(button.dataset.filter);
-      });
-    });
-  }
-
-  const api = { publicationMatches, activityToggleLabel };
+  const api = { activityToggleLabel };
 
   if (typeof module !== "undefined" && module.exports) {
     module.exports = api;
@@ -102,7 +64,6 @@
     document.addEventListener("DOMContentLoaded", function () {
       initializeNavigation();
       initializeActivities();
-      initializePublicationFilters();
     });
   }
 })(typeof globalThis !== "undefined" ? globalThis : this);

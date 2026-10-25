@@ -89,10 +89,13 @@ description: Academic homepage of Zheng Jiang, Ph.D. candidate at BUPT.
   <section class="content-section" id="services" aria-labelledby="services-heading">
     <h2 class="section-title" id="services-heading"><span>Services</span></h2>
     <ul class="service-list">
-      {% for service in site.data.services %}
+      {% assign service_groups = site.data.services | group_by: 'role' %}
+      {% for group in service_groups %}
         <li class="service-item">
-          <strong>{{ service.role }}</strong>,
-          <a href="{{ service.url }}" target="_blank" rel="noopener noreferrer">{{ service.event }}</a>
+          <strong>{{ group.name }}</strong>:
+          {% for service in group.items %}
+            <a href="{{ service.url }}" target="_blank" rel="noopener noreferrer">{{ service.event }}</a>{% unless forloop.last %}; {% endunless %}
+          {% endfor %}
         </li>
       {% endfor %}
     </ul>

@@ -41,13 +41,13 @@ class SiteAcceptanceTest < Minitest::Test
   end
 
   def test_all_resume_content_is_present
-    assert_equal 11, data("activities").length
+    assert_equal 12, data("activities").length
     assert_equal 2, data("education").length
-    assert_equal 4, data("awards").length
+    assert_equal 5, data("awards").length
     assert_path_exists File.join(ROOT, "_data", "services.yml")
-    assert_equal 2, data("services").length
+    assert_equal 6, data("services").length
     assert_equal 4, data("teaching").length
-    assert_equal 4, data("research").length
+    assert_equal 2, data("research").length
     assert_equal 17, data("publications").length
   end
 
@@ -79,13 +79,19 @@ class SiteAcceptanceTest < Minitest::Test
     end
   end
 
-  def test_research_cards_reference_real_publications
-    publication_ids = data("publications").map { |publication| publication.fetch("id") }
+  def test_research_agenda_has_two_overarching_themes
+    research = data("research")
+    assert_equal ["AI & Society", "AI for Sustainable Development"], research.map { |direction| direction.fetch("title") }
+    assert_equal ["Micro level", "Macro level"], research.first.fetch("topics").map { |topic| topic.fetch("level") }
+    assert_equal ["Geographic research", "Ocean science"], research.last.fetch("topics").map { |topic| topic.fetch("level") }
 
-    data("research").each do |card|
-      %w[id title accent paragraphs related_publication_ids].each { |key| refute_empty card.fetch(key).to_s }
-      assert_operator card.fetch("paragraphs").length, :>=, 2
-      card.fetch("related_publication_ids").each { |id| assert_includes publication_ids, id }
+    research.each do |direction|
+      %w[id title accent introduction].each { |key| refute_empty direction.fetch(key).to_s }
+      assert_equal 2, direction.fetch("topics").length
+      direction.fetch("topics").each do |topic|
+        %w[id title image image_alt].each { |key| refute_empty topic.fetch(key).to_s }
+        assert_operator topic.fetch("paragraphs").length, :>=, 1
+      end
     end
   end
 
@@ -93,12 +99,17 @@ class SiteAcceptanceTest < Minitest::Test
     research = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "research-agenda.html"), encoding: "UTF-8"))
     expected_roadmaps = {
       "human-ai-decision-making" => "/assets/images/research-roadmaps/human-ai-open-source.png",
-      "llm-values-ai-orientalism" => "/assets/images/research-roadmaps/geopolitical-bias-pluralistic-ai-v3.png",
+      "llm-values-ai-orientalism" => "/assets/images/research-roadmaps/ai-orientalism-pluralistic-ai.png",
       "ai-geography" => "/assets/images/research-roadmaps/ai-for-geography-v2.png",
       "ai-ocean-science" => "/assets/images/research-roadmaps/ai-for-ocean-science-v2.png"
     }
 
-    assert_equal expected_roadmaps.keys, research.css("section.research-direction").map { |section| section["id"] }
+    assert_equal expected_roadmaps.keys, research.css("section.research-topic").map { |section| section["id"] }
+    assert_equal ["AI & Society", "AI for Sustainable Development"], research.css(".research-direction h2").map(&:text)
+    assert_empty research.css(".related-work")
+    assert_empty research.css(".research-outlook")
+    refute_includes research.text, "Related publications"
+    refute_includes research.text, "Using GitHub Activity Overview as a case"
 
     expected_roadmaps.each do |direction_id, image_path|
       direction = research.at_css("section##{direction_id}")
@@ -110,7 +121,8 @@ class SiteAcceptanceTest < Minitest::Test
       assert_equal image_path, image&.[]("src")
       assert_equal image_path, link&.[]("href")
       refute_empty image&.[]("alt").to_s
-      assert_includes direction.at_css("h2")["class"].to_s.split, "visually-hidden"
+      assert_equal direction.at_css("h3")["id"], direction["aria-labelledby"]
+      refute_includes direction.at_css("h3")["class"].to_s.split, "visually-hidden"
     end
   end
 
@@ -131,6 +143,10 @@ class SiteAcceptanceTest < Minitest::Test
     assert_includes normalized_tex, "RESEARCH INTERESTS"
     assert_includes normalized_tex, "PUBLICATIONS"
     data("publications").each { |publication| assert_includes normalized_tex, publication.fetch("title") }
+    value_atlas = data("publications").find { |publication| publication.fetch("id") == "value-atlas-ai" }
+    assert_equal "Preprint", value_atlas.fetch("venue")
+    value_atlas_entry = tex.split("\\pubitem{The Value Atlas of AI:", 2).last.split("\\pubitem", 2).first
+    assert_includes value_atlas_entry, "\\textit{Preprint}, 2026."
   end
 
   def test_cv_pdf_uses_two_page_letter_layout
@@ -148,7 +164,7 @@ class SiteAcceptanceTest < Minitest::Test
     text = text.force_encoding("UTF-8").scrub
 
     assert status.success?, "pdftotext failed: #{error}"
-    %w[RESEARCH\ INTERESTS EDUCATION PUBLICATIONS HONORS\ AND\ AWARDS SERVICES TEACHING\ EXPERIENCE].each do |heading|
+    %w[RESEARCH\ INTERESTS EDUCATION PUBLICATIONS HONORS\ AND\ AWARDS SERVICES TEACHING\ EXPERIENCE RESEARCH\ AND\ TECHNICAL\ SKILLS].each do |heading|
       assert_includes text, heading
     end
     assert_includes text, "Ph.D. Candidate"
@@ -158,6 +174,12 @@ class SiteAcceptanceTest < Minitest::Test
     assert_includes text, "LinkedIn"
     assert_includes text, "X"
     data("awards").each { |award| assert_includes text, award.fetch("title") }
+    assert_includes text, "AI & Society"
+    assert_includes text, "AI for Sustainable Development"
+    assert_includes text, "NeurIPS BiAlign Workshop"
+    assert_includes text, "Undergraduate Thesis Supervision"
+    assert_includes text, "Branded Course Development Project"
+    assert_match(/The Value Atlas of AI:.*?Preprint, 2026\./m, text)
     data("services").each { |service| assert_includes text, service.fetch("role") }
     data("teaching").each { |item| assert_includes text, item.fetch("course") }
     publication_numbers = text.scan(/^\s*(\d+)\.\s/).flatten.map(&:to_i)
@@ -216,7 +238,7 @@ class SiteAcceptanceTest < Minitest::Test
     source_paths = Dir.glob(File.join(ROOT, "{*.html,_includes/*.html,_layouts/*.html,_data/*.yml,assets/**/*.{css,js}}"))
     combined_source = source_paths.sort.map { |path| File.read(path, encoding: "UTF-8") }.join("\n")
 
-    refute_match(/Hua Shen|BiAlign|huashen218|NYU Shanghai/, combined_source)
+    refute_match(/Hua Shen|huashen218|NYU Shanghai/, combined_source)
     refute_match(/href=["']#["']|\bXX\b/, combined_source)
   end
 
@@ -242,8 +264,9 @@ class SiteAcceptanceTest < Minitest::Test
     assert_includes home, 'aria-expanded="false"'
     assert_includes home, "Show all activities"
     assert_equal 17, publications.scan('class="publication-item"').length
-    assert_equal 6, publications.scan('class="filter-button').length
-    assert_includes publications, 'aria-live="polite"'
+    publication_document = Nokogiri::HTML5(publications)
+    assert_empty publication_document.css(".publication-filters, .filter-button, [data-filter-status]")
+    assert_empty publication_document.css(".publication-item[hidden], .publication-item[data-tags]")
 
     home_document = Nokogiri::HTML5(home)
     activity_toggle = home_document.at_css("[data-activity-toggle]")
@@ -285,13 +308,14 @@ class SiteAcceptanceTest < Minitest::Test
     refute_includes research.text, "My work connects social computing, human–AI decision-making, and AI for science through four complementary research directions."
 
     assert publications.at_css("ol.publication-list"), "publications should use the reference site's compact ordered-list structure"
-    assert_empty publications.css(".publication-tags"), "publication categories belong only in the top filters"
+    assert_empty publications.css(".publication-tags"), "publication categories should not be displayed"
     assert_empty publications.css(".publication-year"), "the reference layout keeps the year with the venue"
     assert_equal 17, publications.css("li.publication-item").length
 
     assert teaching.at_css("ul.teaching-list"), "teaching should use a compact semantic list"
     assert_equal 4, teaching.css("li.teaching-item").length
-    assert_equal 4, research.css("section.research-direction").length
+    assert_equal 2, research.css("section.research-direction").length
+    assert_equal 4, research.css("section.research-topic").length
     assert_empty research.css(".research-card"), "research directions should not look like elevated cards"
 
     assert_empty home.css(".social-mark"), "letter badges should be replaced by the reference SVG icons"
@@ -312,7 +336,7 @@ class SiteAcceptanceTest < Minitest::Test
     home = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "index.html"), encoding: "UTF-8"))
     publications = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "publications.html"), encoding: "UTF-8"))
 
-    assert_equal 11, home.css(".activity-item").length
+    assert_equal 12, home.css(".activity-item").length
     assert_empty home.css(".activity-item[hidden]")
     assert home.at_css("[data-activity-toggle][hidden]"), "activity toggle should start hidden without JavaScript"
     assert_equal 17, publications.css(".publication-item").length

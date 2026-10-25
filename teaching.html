@@ -18,6 +18,12 @@ description: Teaching assistant experience of Zheng Jiang at Beijing University 
           <div>
             <h3>{{ item.course }}</h3>
             <p>{{ item.institution }}</p>
+            {% if item.recognition %}
+              <span class="award-badge teaching-recognition">
+                {% include icon.html name='award' %}
+                <span>{{ item.recognition }}</span>
+              </span>
+            {% endif %}
           </div>
           <time>{{ item.terms }}</time>
         </li>

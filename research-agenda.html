@@ -2,7 +2,7 @@
 layout: default
 title: Research Agenda
 page_class: research
-description: Zheng Jiang's research agenda across open-source human-AI collaboration, geopolitical bias and pluralistic AI, AI for geography, and AI for ocean science.
+description: Zheng Jiang's research in human-AI collaboration, AI Orientalism and pluralistic AI, and AI for sustainable development in geography and ocean science.
 ---
 
 <div class="page-wrapper inner-page">
@@ -10,36 +10,43 @@ description: Zheng Jiang's research agenda across open-source human-AI collabora
     <h1>Research Agenda</h1>
   </header>
 
+  <nav class="research-jump-links" aria-label="Research themes">
+    {% for direction in site.data.research %}
+      <a href="{{ '/research-agenda.html#' | append: direction.id | relative_url }}">{{ direction.title | escape }}</a>
+    {% endfor %}
+  </nav>
+
   <div class="research-direction-list">
-    {% for card in site.data.research %}
-      <section class="research-direction" id="{{ card.id }}" style="--direction-accent: {{ card.accent }};">
-        <h2 class="visually-hidden">{{ card.title }}</h2>
-        <figure class="research-visual">
-          <a href="{{ card.image | relative_url }}" aria-label="View the full-size research roadmap for {{ card.title }}">
-            <img
-              src="{{ card.image | relative_url }}"
-              alt="{{ card.image_alt }}"
-              width="{{ card.image_width }}"
-              height="{{ card.image_height }}"
-              decoding="async"
-              {% unless forloop.first %}loading="lazy"{% endunless %}
-            >
-          </a>
-        </figure>
-        <div class="prose">
-          {% for paragraph in card.paragraphs %}
-            {{ paragraph | markdownify }}
-          {% endfor %}
-        </div>
-        <div class="related-work">
-          <h3>Related publications</h3>
-          <ul>
-            {% for publication_id in card.related_publication_ids %}
-              {% assign publication = site.data.publications | where: 'id', publication_id | first %}
-              <li><a href="{{ '/publications.html' | append: '#' | append: publication.id | relative_url }}">{{ publication.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
+    {% for direction in site.data.research %}
+      <section class="research-direction" id="{{ direction.id }}" style="--direction-accent: {{ direction.accent }};" aria-labelledby="{{ direction.id }}-heading">
+        <header class="research-direction-heading">
+          <h2 id="{{ direction.id }}-heading">{{ direction.title | escape }}</h2>
+          <p class="research-framing">{{ direction.framing }}</p>
+        </header>
+        <div class="prose research-introduction">{{ direction.introduction | markdownify }}</div>
+        {% for topic in direction.topics %}
+          <section class="research-topic" id="{{ topic.id }}" aria-labelledby="{{ topic.id }}-heading">
+            <p class="research-level">{{ topic.level }}</p>
+            <h3 id="{{ topic.id }}-heading">{{ topic.title }}</h3>
+            <div class="prose">
+              {% for paragraph in topic.paragraphs %}
+                {{ paragraph | markdownify }}
+              {% endfor %}
+            </div>
+            <figure class="research-visual">
+              <a href="{{ topic.image | relative_url }}" aria-label="View the full-size research roadmap for {{ topic.title }}">
+                <img
+                  src="{{ topic.image | relative_url }}"
+                  alt="{{ topic.image_alt }}"
+                  width="{{ topic.image_width }}"
+                  height="{{ topic.image_height }}"
+                  decoding="async"
+                  loading="lazy"
+                >
+              </a>
+            </figure>
+          </section>
+        {% endfor %}
       </section>
     {% endfor %}
   </div>

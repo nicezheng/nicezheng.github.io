@@ -1,6 +1,18 @@
 - role: Program Committee
-  event: AAAI 2026 AI for Social Impact Track
+  event: AAAI (AI for Social Impact Track)
   url: https://aaai.org/conference/aaai/aaai-26/aisi-call/
+- role: Program Committee
+  event: NeurIPS BiAlign Workshop
+  url: https://bialign-workshop.github.io/
 - role: Reviewer
-  event: NeurIPS 2026
-  url: https://neurips.cc/Conferences/2026
+  event: NeurIPS
+  url: https://neurips.cc/
+- role: Reviewer
+  event: AAAI
+  url: https://aaai.org/conference/aaai/
+- role: Reviewer
+  event: ACL
+  url: https://www.aclweb.org/portal/
+- role: Reviewer
+  event: IJCAI
+  url: https://ijcai.org/

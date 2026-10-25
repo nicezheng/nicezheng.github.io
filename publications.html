@@ -2,7 +2,7 @@
 layout: default
 title: Publications
 page_class: publications
-description: Publications by Zheng Jiang in social computing, AI behavior, geographical AI, and ocean AI.
+description: Publications by Zheng Jiang in AI & Society and AI for Sustainable Development.
 ---
 
 <div class="page-wrapper inner-page">
@@ -10,18 +10,9 @@ description: Publications by Zheng Jiang in social computing, AI behavior, geogr
     <h1>Publications</h1>
   </header>
 
-  <div class="publication-filters" role="group" aria-label="Filter publications by research category">
-    {% for filter in site.data.publication_filters %}
-      <button class="filter-button{% if forloop.first %} is-active{% endif %}" type="button" data-filter="{{ filter.label }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
-        <span>{{ filter.label }}</span><span class="filter-count">{{ filter.count }}</span>
-      </button>
-    {% endfor %}
-  </div>
-  <p class="filter-status" aria-live="polite" data-filter-status>Showing all 17 publications.</p>
-
-  <ol class="publication-list" data-publication-list>
+  <ol class="publication-list">
     {% for publication in site.data.publications %}
-      <li class="publication-item" id="{{ publication.id }}" data-tags="{{ publication.tags | join: '|' }}">
+      <li class="publication-item" id="{{ publication.id }}">
         <div class="publication-body">
           <h2>{{ publication.title }}</h2>
           <p class="publication-authors">
