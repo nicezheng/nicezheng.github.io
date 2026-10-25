@@ -1,0 +1,58 @@
+---
+id: healthcare-ai-governance
+title: 'Principled Convergence, Operational Fragmentation: Healthcare AI Governance
+  in the US, EU, China, and Africa'
+authors:
+- name: Kingsley Mbewe
+  display: Kingsley Mbewe
+  affiliations: '1,2'
+- name: Por Srenhong
+  display: Por Srenhong
+  affiliations: '1'
+- name: Zaineb El Hamdou
+  display: Zaineb El Hamdou
+  affiliations: '1'
+- name: Wighio Kainat
+  display: Wighio Kainat
+  affiliations: '1,3'
+- name: Zheng Jiang
+  display: Zheng Jiang, PhD
+  affiliations: 1*
+- name: Shaffi Mdala
+  display: Shaffi Mdala, MD
+  affiliations: '4,5'
+- name: Yi Wang
+  display: Yi Wang, PhD
+  affiliations: '1'
+affiliations:
+- Beijing University of Posts and Telecommunications, Beijing, China
+- University of Malawi, Zomba, Malawi
+- University of Sindh, Jamshoro, Pakistan
+- Queen Elizabeth Central Hospital, Blantyre, Malawi
+- Kamuzu University of Health Sciences, Blantyre, Malawi
+abstract: The integration of artificial intelligence (AI) into global healthcare workflows
+  is advancing faster than state governance systems can adapt around the world. This
+  Health Policy paper shifts beyond the traditional Global North versus Global South
+  binary, providing a comparative regulatory analysis of a landscape divided between
+  dominant technology-exporting superpowers (the United States, the European Union,
+  and China) and technology-importing regions (the African continent). While exporting
+  powers demonstrate principled convergence on safety, lifecycle management, and human
+  oversight, their underlying legal architectures introduce severe operational fragmentation.
+  For technology-importing regions, this fragmentation creates systemic vulnerabilities,
+  exposing local populations to regulatory arbitrage and asymmetric dependencies on
+  foreign cloud infrastructure. This operational friction has triggered an emergent
+  narrative of Sovereign AI, wherein developing nations prioritize data sovereignty
+  and localized compute infrastructure to guarantee algorithmic alignment with regional
+  clinical realities. Ultimately, mitigating global health disparities requires reconciling
+  fragmented state legal regimes with the normative ethical frameworks championed
+  by intergovernmental and non-governmental institutions, shifting toward a unified,
+  human-centered global regulatory science.
+status: Preprint
+rights_notice: "© 2026 The authors. All rights reserved."
+display_year: 2026
+display_order: 3
+publication_date: '2026-10-25'
+version_date: '2026-10-25'
+preview: false
+pdf_sha256: b463aad78fc76d2fbec226dfbe6d1c49c73ee4af895e7f576a5b4a8df6c99a7d
+managed_by: paper.rb

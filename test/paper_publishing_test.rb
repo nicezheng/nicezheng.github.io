@@ -20,6 +20,9 @@ class PaperPublishingTest < Minitest::Test
       path = File.join(ROOT, entry)
       FileUtils.cp_r(path, @repo) if File.exist?(path)
     end
+    # Each fixture publishes its own papers; live releases must not leak into it.
+    fixture_hosted_data = File.join(@repo, "_data/hosted_papers")
+    FileUtils.remove_entry(fixture_hosted_data) if File.directory?(fixture_hosted_data)
     @metadata = {
       "id" => "sample-paper", "title" => 'AI & Society: "Whose Values?"',
       "authors" => [{ "name" => "First Author", "display" => "First Author, PhD", "affiliations" => "1" }, { "name" => "Second Author", "display" => "Second Author", "affiliations" => "1*" }],

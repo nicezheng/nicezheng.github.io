@@ -1,0 +1,52 @@
+---
+id: anthropomorphic-trap
+title: 'Escaping the Anthropomorphic Trap: Resolving the Cognitive Mismatch in Future
+  AI Software Development'
+authors:
+- name: Yi Wang
+  display: Yi Wang
+  affiliations: 1,2*
+- name: Zheng Jiang
+  display: Zheng Jiang
+  affiliations: '1'
+- name: Gaowei Zhang
+  display: Gaowei Zhang
+  affiliations: '1'
+- name: Min Zhang
+  display: Min Zhang
+  affiliations: '3'
+- name: Yang Feng
+  display: Yang Feng
+  affiliations: '4'
+affiliations:
+- Beijing University of Posts and Telecommunications, Beijing, China
+- Beijing Academy of Artificial Intelligence, Beijing, China
+- East China Normal University, Shanghai, China
+- Nanjing University, Nanjing, Jiangsu, China
+abstract: For more than a half-century, the foundational paradigms of software development—such
+  as modularity, information hiding, and hierarchical labor division—have been engineered
+  to accommodate the strict cognitive limitations of human working memory. However,
+  the rapid emergence of multi-agent artificial intelligence exposes a fundamental
+  cognitive mismatch. Current frameworks attempt to integrate high-dimensional, stateless
+  neural reasoning engines by coercing them to operate within these legacy, human-centric
+  structures, falling into an anthropomorphic trap. This friction generates a novel,
+  highly volatile behavioral entropy defined as AI-software technical debt, wherein
+  amnesic agents hallucinate opaque workarounds to bypass architectural blindfolds.
+  To resolve this, we propose Invisible Software Engineering (Invisible SE), a paradigm
+  shift from agent-centric human emulation to environment-centric stigmergic governance.
+  By reimagining the repository as an active computational topology which utilizes
+  topological gradients, temporally weighted memory, and representation-space regularization,
+  Invisible SE safely guides AI behavior without classical code-level constraints,
+  thus transcending the cognitive horizons of human developers. This environment-centric
+  protocol offers a potential blueprint for orchestrating scalable, long-lived computational
+  infrastructures that transcend the cognitive horizons of human developers and enable
+  autonomous agents to work, coordinate, and scale to build future software systems.
+status: Preprint
+rights_notice: "© 2026 The authors. All rights reserved."
+display_year: 2026
+display_order: 2
+publication_date: '2026-10-25'
+version_date: '2026-10-25'
+preview: false
+pdf_sha256: 3d61706c9abcf3d7887f51dba0d665c56d10d32e5a1da8a583eacdf8fb542f58
+managed_by: paper.rb

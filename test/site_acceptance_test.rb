@@ -376,6 +376,15 @@ class SiteAcceptanceTest < Minitest::Test
     assert_empty publications.css(".publication-item[hidden]")
   end
 
+  def test_stylesheet_urls_include_a_shared_build_version_to_refresh_browser_caches
+    urls = EXPECTED_ROUTES.map do |route|
+      document = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", route), encoding: "UTF-8"))
+      document.at_css('link[rel="stylesheet"]')["href"]
+    end
+    assert_equal 1, urls.uniq.size, "all pages should request the same stylesheet version"
+    assert_match %r{\A/assets/css/main\.css\?v=\d+\z}, urls.first
+  end
+
   def test_built_internal_links_assets_fragments_and_external_link_safety
     built_pages = EXPECTED_ROUTES.map { |route| File.join(ROOT, "_site", route) }
 
