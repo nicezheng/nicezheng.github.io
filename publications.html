@@ -10,31 +10,49 @@ description: Publications by Zheng Jiang in AI & Society and AI for Sustainable 
     <h1>Publications</h1>
   </header>
 
-  <ol class="publication-list">
-    {% for publication in site.data.publications %}
-      <li class="publication-item" id="{{ publication.id }}">
+  {% assign hosted_count = site.data.hosted_papers | size %}
+  {% assign hosted_papers = '' | split: ',' %}
+  {% for entry in site.data.hosted_papers %}
+    {% assign hosted_papers = hosted_papers | push: entry[1] %}
+  {% endfor %}
+  {% assign hosted_papers = hosted_papers | sort: 'display_order', 'last' %}
+  {% assign total_count = site.data.publications.size | plus: hosted_count %}
+  {% assign selected_papers = site.data.publications | where_exp: 'publication', "publication.venue != 'Preprint'" %}
+
+  <section class="publication-section" id="recent-preprints" aria-labelledby="preprints-heading">
+    <h2 class="publication-section-heading" id="preprints-heading">Recent Preprints</h2>
+    <ol class="publication-list" reversed start="{{ total_count }}">
+    {% for manuscript in hosted_papers %}
+      {% assign manuscript_path = '/papers/' | append: manuscript.id | append: '/' %}
+      <li class="publication-item hosted-paper" id="{{ manuscript.id }}">
         <div class="publication-body">
-          <h2>{{ publication.title }}</h2>
-          <p class="publication-authors">
-            {% for author in publication.authors %}{% if author.self %}<strong class="self-author">{{ author.name }}</strong>{% else %}{{ author.name }}{% endif %}{% if author.equal %}<sup>*</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
-          </p>
-          <p class="publication-venue">
-            {% if publication.venue_url %}<a class="publication-venue-link" href="{{ publication.venue_url }}" target="_blank" rel="noopener noreferrer">{{ publication.venue }}</a>{% else %}{{ publication.venue }}{% endif %}{% unless publication.venue contains publication.year %}, {{ publication.year }}{% endunless %}
-          </p>
-          {% if publication.links.size > 0 or publication.award %}
-            <div class="publication-meta">
-              {% for link in publication.links %}
-                <a class="resource-link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
-                  {% if link.label == 'Code' %}{% include icon.html name='github' %}{% else %}{% include icon.html name='file' %}{% endif %}
-                  <span>[{{ link.label }}]</span>
-                </a>
-              {% endfor %}
-              {% if publication.award %}<span class="award-badge">{% include icon.html name='award' %} {{ publication.award }}</span>{% endif %}
-            </div>
-          {% endif %}
+          <h3>{{ manuscript.title | escape }}</h3>
+          <p class="publication-authors">{% for author in manuscript.authors %}{% if author.name == site.data.profile.name %}<strong class="self-author">{{ author.name | escape }}</strong>{% else %}{{ author.name | escape }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+          <p class="publication-venue">Preprint{% if manuscript.publication_date %}, {{ manuscript.publication_date | date: '%Y' }}{% elsif manuscript.display_year %}, {{ manuscript.display_year }}{% endif %}</p>
+          <div class="publication-meta">
+            <a class="resource-link" href="{{ manuscript_path | append: 'paper.pdf' | relative_url }}">{% include icon.html name='file' %} <span>[Paper]</span></a>
+            {% if manuscript.code_url %}<a class="resource-link" href="{{ manuscript.code_url | escape }}" target="_blank" rel="noopener noreferrer">{% include icon.html name='github' %} <span>[Code]</span></a>{% endif %}
+          </div>
         </div>
       </li>
     {% endfor %}
-  </ol>
+    {% for publication in site.data.publications %}
+      {% if publication.venue == 'Preprint' %}
+        {% include publication-item.html publication=publication %}
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </section>
+
+  <section class="publication-section" id="selected-papers" aria-labelledby="selected-papers-heading">
+    <h2 class="publication-section-heading" id="selected-papers-heading">Selected Papers</h2>
+    <ol class="publication-list" reversed start="{{ selected_papers.size }}">
+      {% for publication in site.data.publications %}
+        {% unless publication.venue == 'Preprint' %}
+          {% include publication-item.html publication=publication %}
+        {% endunless %}
+      {% endfor %}
+    </ol>
+  </section>
   <p class="contribution-note"><sup>*</sup> denotes equal contribution.</p>
 </div>

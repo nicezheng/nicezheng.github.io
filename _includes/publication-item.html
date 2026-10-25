@@ -1,0 +1,23 @@
+{% assign publication = include.publication %}
+<li class="publication-item" id="{{ publication.id }}">
+  <div class="publication-body">
+    <h3>{{ publication.title }}</h3>
+    <p class="publication-authors">
+      {% for author in publication.authors %}{% if author.self %}<strong class="self-author">{{ author.name }}</strong>{% else %}{{ author.name }}{% endif %}{% if author.equal %}<sup>*</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+    </p>
+    <p class="publication-venue">
+      {% if publication.venue_url %}<a class="publication-venue-link" href="{{ publication.venue_url }}" target="_blank" rel="noopener noreferrer">{{ publication.venue }}</a>{% else %}{{ publication.venue }}{% endif %}{% unless publication.venue contains publication.year %}, {{ publication.year }}{% endunless %}
+    </p>
+    {% if publication.links.size > 0 or publication.award %}
+      <div class="publication-meta">
+        {% for link in publication.links %}
+          <a class="resource-link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+            {% if link.label == 'Code' %}{% include icon.html name='github' %}{% else %}{% include icon.html name='file' %}{% endif %}
+            <span>[{{ link.label }}]</span>
+          </a>
+        {% endfor %}
+        {% if publication.award %}<span class="award-badge">{% include icon.html name='award' %} {{ publication.award }}</span>{% endif %}
+      </div>
+    {% endif %}
+  </div>
+</li>

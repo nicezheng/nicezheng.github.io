@@ -3,5 +3,7 @@ _site/
 .sass-cache/
 .bundle/
 vendor/
-tmp/pdfs/
+tmp/
+# Manuscript source archives belong in ../paper-library/, never in this repo.
+*.zip
 .DS_Store

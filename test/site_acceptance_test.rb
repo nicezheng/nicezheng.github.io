@@ -18,6 +18,11 @@ class SiteAcceptanceTest < Minitest::Test
     YAML.safe_load_file(File.join(ROOT, "_data", "#{name}.yml"), aliases: true)
   end
 
+  def expected_publication_ids
+    hosted = Dir.glob(File.join(ROOT, "_data/hosted_papers/*.yml")).map { |path| YAML.safe_load_file(path).fetch("id") }
+    data("publications").map { |publication| publication.fetch("id") } + hosted
+  end
+
   def test_expected_routes_and_shared_layout_exist
     EXPECTED_ROUTES.each do |route|
       assert_path_exists File.join(ROOT, route)
@@ -275,6 +280,34 @@ class SiteAcceptanceTest < Minitest::Test
     assert_equal activity_list["id"], activity_toggle["aria-controls"]
   end
 
+  def test_publications_separate_preprints_from_selected_papers_without_platform_labels
+    document = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "publications.html"), encoding: "UTF-8"))
+    assert_equal ["Recent Preprints", "Selected Papers"], document.css(".publication-section > h2").map(&:text)
+    preprints = document.css("#recent-preprints .publication-item").map { |item| item["id"] }
+    selected = document.css("#selected-papers .publication-item").map { |item| item["id"] }
+    %w[value-atlas-ai paradox-being-seen ocean-parameters-review].each { |id| assert_includes preprints, id }
+    %w[sstode human-llm-unverifiable-decisions ocean-heat-extremes-warning heterogeneous-se-research].each { |id| assert_includes selected, id }
+    assert_empty preprints & selected
+    assert_equal expected_publication_ids.sort, (preprints + selected).sort
+    document.css(".publication-item").each do |item|
+      assert item.at_css("h3"), "paper titles should sit below the section heading"
+      item.css(".resource-link").each do |link|
+        assert_includes ["[Paper]", "[Code]", "[Data]", "[Project Proposal]"], link.text.strip
+      end
+    end
+  end
+
+  def test_publication_numbers_count_down_continuously_across_both_sections
+    document = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "publications.html"), encoding: "UTF-8"))
+    lists = document.css(".publication-section > ol.publication-list")
+    numbers = lists.flat_map do |list|
+      assert list.key?("reversed"), "publication numbering must count down without JavaScript"
+      start = Integer(list["start"])
+      list.css("li.publication-item").each_with_index.map { |_item, index| start - index }
+    end
+    assert_equal expected_publication_ids.length.downto(1).to_a, numbers
+  end
+
   def test_homepage_services_and_publication_venue_links_are_rendered
     home = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "index.html"), encoding: "UTF-8"))
     publications = Nokogiri::HTML5(File.read(File.join(ROOT, "_site", "publications.html"), encoding: "UTF-8"))
@@ -310,7 +343,7 @@ class SiteAcceptanceTest < Minitest::Test
     assert publications.at_css("ol.publication-list"), "publications should use the reference site's compact ordered-list structure"
     assert_empty publications.css(".publication-tags"), "publication categories should not be displayed"
     assert_empty publications.css(".publication-year"), "the reference layout keeps the year with the venue"
-    assert_equal 17, publications.css("li.publication-item").length
+    assert_equal expected_publication_ids.sort, publications.css("li.publication-item").map { |item| item["id"] }.sort
 
     assert teaching.at_css("ul.teaching-list"), "teaching should use a compact semantic list"
     assert_equal 4, teaching.css("li.teaching-item").length
@@ -339,7 +372,7 @@ class SiteAcceptanceTest < Minitest::Test
     assert_equal 12, home.css(".activity-item").length
     assert_empty home.css(".activity-item[hidden]")
     assert home.at_css("[data-activity-toggle][hidden]"), "activity toggle should start hidden without JavaScript"
-    assert_equal 17, publications.css(".publication-item").length
+    assert_equal expected_publication_ids.sort, publications.css(".publication-item").map { |item| item["id"] }.sort
     assert_empty publications.css(".publication-item[hidden]")
   end
 

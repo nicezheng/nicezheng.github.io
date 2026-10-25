@@ -3,13 +3,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   {% assign page_title = page.title | default: site.title %}
-  <title>{% if page.title %}{{ page_title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace }}">
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ page_title }}">
-  <meta property="og:description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace }}">
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {% assign canonical_path = page.url | replace: '/index.html', '/' %}
+  {% assign paper = nil %}
+  {% if page.paper_id %}{% assign paper = site.data.hosted_papers[page.paper_id] %}{% endif %}
+  <title>{% if page.title %}{{ page_title | escape }} · {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | escape }}">
+  <link rel="canonical" href="{{ canonical_path | absolute_url }}">
+  {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  {% if site.google_site_verification and site.google_site_verification != '' %}<meta name="google-site-verification" content="{{ site.google_site_verification | escape }}">{% endif %}
+  {% include paper-metadata.html %}
+  <meta property="og:type" content="{% if paper %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | escape }}">
+  <meta property="og:url" content="{{ canonical_path | absolute_url }}">
   <meta property="og:image" content="{{ '/assets/images/profile.jpg' | absolute_url }}">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="{{ '/assets/images/profile.jpg' | relative_url }}" type="image/jpeg">

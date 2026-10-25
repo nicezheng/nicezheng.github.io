@@ -26,6 +26,24 @@
   color-scheme: light;
 }
 
+/* Individual papers: readable, crawlable HTML alongside the original PDF. */
+.paper-detail { max-width: 940px; }
+.paper-back { display: inline-block; margin-bottom: 1.3rem; }
+.paper-heading h1 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.22; margin: .6rem 0 1rem; color: var(--brand-color); }
+.paper-status { color: var(--muted); font-size: .95rem; margin: 0; }
+.paper-authors { font-size: 1.08rem; line-height: 1.6; }
+.paper-authors sup { font-size: .7em; margin-left: .12em; }
+.paper-affiliations { padding-left: 1.25rem; color: var(--muted); font-size: .9rem; line-height: 1.5; }
+.paper-affiliations li { padding-left: .2rem; }
+.paper-resources { display: flex; align-items: center; flex-wrap: wrap; gap: .9rem 1.5rem; margin: 1.3rem 0 1.7rem; }
+.paper-resources .paper-download { display: inline-flex; gap: .5rem; align-items: center; border: 1px solid var(--brand-color); border-radius: 4px; padding: .5rem .85rem; }
+.paper-download svg { width: 1em; height: 1em; }
+.paper-abstract, .paper-citation { border-top: 1px solid var(--line); padding-top: 1.1rem; margin-top: 1.3rem; }
+.paper-abstract h2, .paper-citation h2 { color: var(--brand-color); font-size: 1.3rem; margin: 0 0 .8rem; }
+.paper-abstract p { font-size: 1.06rem; line-height: 1.75; }
+.paper-citation { font-size: .94rem; overflow-wrap: anywhere; }
+.paper-rights { margin-top: 1.5rem; color: var(--muted); font-size: .9rem; }
+
 * {
   box-sizing: border-box;
 }
@@ -578,6 +596,17 @@ a:hover .icon {
   line-height: 1.58;
 }
 
+.publication-section + .publication-section {
+  margin-top: 30px;
+}
+
+.publication-section-heading {
+  margin: 0 0 14px;
+  color: var(--brand-color);
+  font-size: 1.3em;
+  line-height: 1.35;
+}
+
 .publication-list {
   margin: 0 0 0 28px;
   padding: 0;
@@ -604,7 +633,7 @@ a:hover .icon {
   min-width: 0;
 }
 
-.publication-body h2 {
+.publication-body h3 {
   margin: 0 0 2px;
   font-size: 1em;
   line-height: 1.45;

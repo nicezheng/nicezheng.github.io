@@ -1,0 +1,9 @@
+{% if paper %}
+  <meta name="citation_title" content="{{ paper.title | escape }}">
+  {% for author in paper.authors %}<meta name="citation_author" content="{{ author.name | escape }}">
+  {% endfor %}
+  {% if paper.publication_date %}<meta name="citation_publication_date" content="{{ paper.publication_date | date: '%Y/%m/%d' }}">{% endif %}
+  <meta name="citation_pdf_url" content="{{ '/papers/' | append: paper.id | append: '/paper.pdf' | absolute_url }}">
+  <meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}">
+  <meta name="citation_language" content="en">
+{% endif %}

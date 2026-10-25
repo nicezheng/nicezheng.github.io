@@ -12,6 +12,8 @@ timezone: Asia/Shanghai
 markdown: kramdown
 strict_front_matter: true
 theme:
+# Optional: paste only the verification token from Google Search Console.
+google_site_verification: "OtCNi8U7JYtmkg-76_UyNdpLYF_O6UXMAQ4OZmYEJvU"
 
 exclude:
   - cv-source
@@ -19,5 +21,6 @@ exclude:
   - Gemfile.lock
   - README.md
   - test
+  - scripts
   - tmp
   - vendor

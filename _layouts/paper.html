@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% assign paper = site.data.hosted_papers[page.paper_id] %}
+{% assign paper_path = '/papers/' | append: paper.id | append: '/' %}
+<article class="page-wrapper inner-page paper-detail">
+  <a class="paper-back" href="{{ '/publications.html' | relative_url }}">← All publications</a>
+  <header class="paper-heading">
+    <p class="paper-status">Preprint{% if paper.publication_date %} · First posted {{ paper.publication_date | date: '%B %-d, %Y' }}{% endif %}{% if paper.version_date and paper.version_date != paper.publication_date %} · Updated {{ paper.version_date | date: '%B %-d, %Y' }}{% endif %}</p>
+    <h1>{{ paper.title | escape }}</h1>
+    <p class="paper-authors">{% for author in paper.authors %}<span>{{ author.display | escape }}<sup>{{ author.affiliations | escape }}</sup></span>{% unless forloop.last %}; {% endunless %}{% endfor %}</p>
+    <ol class="paper-affiliations">{% for affiliation in paper.affiliations %}<li>{{ affiliation | escape }}</li>{% endfor %}</ol>
+    <div class="paper-resources">
+      <a class="paper-download" data-paper-pdf href="{{ paper_path | append: 'paper.pdf' | relative_url }}">{% include icon.html name='file' %} Full paper (PDF)</a>
+      {% if paper.code_url %}<a class="resource-link" data-paper-code href="{{ paper.code_url | escape }}" target="_blank" rel="noopener noreferrer">{% include icon.html name='github' %} <span>[Code]</span></a>{% endif %}
+    </div>
+  </header>
+  <section class="paper-abstract" aria-labelledby="abstract-heading">
+    <h2 id="abstract-heading">Abstract</h2>
+    <p>{{ paper.abstract | escape }}</p>
+  </section>
+  <section class="paper-citation" aria-labelledby="cite-heading">
+    <h2 id="cite-heading">Cite this preprint</h2>
+    <p>{% for author in paper.authors %}{{ author.name | escape }}{% unless forloop.last %}; {% endunless %}{% endfor %}. {% if paper.publication_date %}({{ paper.publication_date | date: '%Y' }}). {% endif %}<em>{{ paper.title | escape }}</em>. Preprint.</p>
+    {% unless paper.preview %}<a href="{{ page.url | absolute_url }}">{{ page.url | absolute_url }}</a>{% endunless %}
+  </section>
+  {% if paper.rights_notice %}<p class="paper-rights">{{ paper.rights_notice | escape }}</p>{% endif %}
+</article>

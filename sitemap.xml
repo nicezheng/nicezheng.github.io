@@ -1,0 +1,12 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for item in site.pages %}{% if item.layout and item.noindex != true %}
+  <url>
+    <loc>{{ item.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
+    {% if item.paper_id %}{% assign paper = site.data.hosted_papers[item.paper_id] %}{% if paper.version_date %}<lastmod>{{ paper.version_date }}</lastmod>{% endif %}{% endif %}
+  </url>
+  {% endif %}{% endfor %}
+</urlset>
