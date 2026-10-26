@@ -734,6 +734,24 @@ a:hover .icon {
   text-align: center;
 }
 
+.visitor-counter {
+  padding: 14px 24px 0;
+  text-align: center;
+}
+
+.visitor-counter a {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.visitor-counter img {
+  display: block;
+  width: 140px;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
 @media (max-width: 900px) {
   .site-header-inner,
   .page-wrapper {

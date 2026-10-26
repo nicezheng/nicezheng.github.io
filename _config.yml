@@ -15,6 +15,13 @@ theme:
 # Optional: paste only the verification token from Google Search Console.
 google_site_verification: "OtCNi8U7JYtmkg-76_UyNdpLYF_O6UXMAQ4OZmYEJvU"
 
+# Public embed URLs only; management credentials do not belong in this file.
+visitor_counter:
+  enabled: true
+  statistics_url: "https://info.flagcounter.com/jBAU"
+  # Use percent_0 instead of percent_1 to show counts again; keep jBAU unchanged.
+  image_url: "https://s05.flagcounter.com/count2/jBAU/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_1/"
+
 exclude:
   # Exclude local-only files even when building from a working checkout.
   - docs

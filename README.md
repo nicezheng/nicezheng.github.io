@@ -58,6 +58,27 @@ The sitemap should contain the four public site pages plus released paper abstra
 pages, never development notes. Acceptance tests check this boundary and confirm
 that only the selected roadmap images are included in the build.
 
+## Homepage visitor counter
+
+The homepage footer embeds the registered Flag Counter `jBAU` as a linked image,
+with two columns, up to ten country flags, percentages instead of visitor counts,
+and no pageview total displayed. It stays compact at 140 px wide above the
+copyright line. Other pages do not load the counter. Its public URLs are in
+`visitor_counter` in `_config.yml`; set `enabled: false` to remove the embed and
+stop recording visits from this site. Restart the local Jekyll server after
+changing configuration. Keep counter-management credentials private.
+
+To show visitor counts again, change only `percent_1` to `percent_0` in the image
+URL and update the corresponding acceptance-test expectation. Keep the registered
+ID `jBAU` unchanged so the existing totals are retained. The linked provider
+statistics page still exposes counts even while the homepage shows percentages.
+
+This is an approximate third-party counter, not a count of all website traffic.
+The provider receives the browser request when the homepage image loads, and
+local previews can count too. Blocked images or network failures can prevent
+counting; they do not stop the website from loading. The image links to the
+provider's visitor statistics. No additional tracking JavaScript is installed.
+
 ## Rebuilding the CV
 
 The editable source is `cv-source/Zheng_Jiang_CV.tex`. With TeX Live and

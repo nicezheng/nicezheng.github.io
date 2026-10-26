@@ -2,6 +2,7 @@ require "minitest/autorun"
 require "nokogiri"
 require "open3"
 require "yaml"
+require "liquid"
 
 class SiteAcceptanceTest < Minitest::Test
   ROOT = File.expand_path("..", __dir__)
@@ -43,6 +44,37 @@ class SiteAcceptanceTest < Minitest::Test
     assert_equal %w[Google\ Scholar GitHub X LinkedIn CV], profile.fetch("social_links").map { |link| link.fetch("label") }
     profile.fetch("social_links").each { |link| refute_empty link.fetch("url") }
     assert_equal "/assets/files/Zheng_Jiang_CV.pdf", profile.fetch("social_links").last.fetch("url")
+  end
+
+  def test_visitor_counter_shows_percentages_only_on_homepage_with_same_registered_id
+    Dir.glob(File.join(ROOT, "_site", "**", "*.html")).each do |path|
+      page = Nokogiri::HTML5(File.read(path, encoding: "UTF-8"))
+      counters = page.css(".visitor-counter")
+      unless path == File.join(ROOT, "_site", "index.html")
+        assert_empty counters, "counter should not appear on #{path}"
+        next
+      end
+
+      assert_equal 1, counters.length, "homepage should show one counter"
+      link = counters.first.at_css("a")
+      assert_equal "https://info.flagcounter.com/jBAU", link["href"]
+      refute_empty link["aria-label"].to_s
+      image = link.at_css("img")
+      assert_equal "https://s05.flagcounter.com/count2/jBAU/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_1/", image["src"]
+      refute_empty image["alt"].to_s
+    end
+  end
+
+  def test_visitor_counter_configuration_can_disable_or_omit_the_embed
+    template = Liquid::Template.parse(File.read(File.join(ROOT, "_includes", "footer.html"), encoding: "UTF-8"))
+    configured = { "enabled" => true, "statistics_url" => "https://info.flagcounter.com/example", "image_url" => "https://s05.flagcounter.com/example.png" }
+    [nil, {}, configured.merge("enabled" => false), configured.merge("image_url" => ""), configured.merge("statistics_url" => nil)].each do |config|
+      html = template.render!("site" => { "visitor_counter" => config }, "page" => { "page_class" => "home" })
+      assert_empty Nokogiri::HTML5.fragment(html).css(".visitor-counter"), "missing or disabled configuration should not create a broken embed"
+    end
+
+    html = template.render!("site" => { "visitor_counter" => configured }, "page" => { "page_class" => "home" })
+    assert_equal "https://s05.flagcounter.com/example.png", Nokogiri::HTML5.fragment(html).at_css(".visitor-counter img")&.[]("src")
   end
 
   def test_all_resume_content_is_present

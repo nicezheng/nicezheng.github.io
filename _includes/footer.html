@@ -1,4 +1,12 @@
 <footer class="site-footer">
+  {% assign counter = site.visitor_counter %}
+  {% if page.page_class == 'home' and counter.enabled == true and counter.image_url and counter.image_url != empty and counter.statistics_url and counter.statistics_url != empty %}
+  <div class="visitor-counter">
+    <a href="{{ counter.statistics_url | escape }}" target="_blank" rel="noopener noreferrer" aria-label="View visitor statistics on Flag Counter">
+      <img src="{{ counter.image_url | escape }}" alt="Flag Counter: homepage visitors by country">
+    </a>
+  </div>
+  {% endif %}
   <div class="site-footer-inner">
     <span>© {{ site.time | date: '%Y' }} Zheng Jiang</span>
     <span aria-hidden="true">·</span>
